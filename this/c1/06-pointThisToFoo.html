@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(num){
+                this.count++;
+                console.log('foo', num);
+            }
+            
+            foo.count = 0;
+            
+            for (var i=0; i < 3; i++) {
+                foo.call(foo,i);
+            }
+            
+            console.log(foo.count);
+        </script>
+    </head>
+</html>
