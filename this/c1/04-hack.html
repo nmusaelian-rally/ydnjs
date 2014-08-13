@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            var data = {
+                count: 0
+            };
+            
+            function foo(num){
+                data.count++;
+                console.log('foo', num);
+            }
+            
+            for (var i=0; i < 3; i++) {
+                foo(i);
+            }
+            
+            console.log(data.count);
+        </script>
+    </head>
+</html>
