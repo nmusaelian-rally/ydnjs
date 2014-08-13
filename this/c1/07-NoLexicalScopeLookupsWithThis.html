@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                var a = 2;
+                foo.bar(); 
+            }
+            
+            foo.bar = function bar(){
+                console.log(this.a);
+            }
+            
+            foo(); //undefined
+            /*
+             attempting to use 'this' to create a bridge between the lexical scopes of foo() and bar(), so that bar() has access to the variable 'a'
+             in the inner scope of foo(). No such bridge is possible. You cannot use 'this' reference to look something up in a lexical scope.
+             **/
+        </script>
+    </head>
+</html>
