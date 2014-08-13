@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function baz(){
+                //call-stack: baz
+                //call-site: global
+                console.log('baz');
+                bar(); //call-site for baz
+                
+            }
+            function bar(){
+                //call-stack: baz,bar
+                //call-site: baz
+                console.log('bar');
+                foo(); //call-site for foo
+            }
+            function foo(){
+                //call-stack: baz,bar,foo
+                //call-site: bar
+                console.log('foo'); //set a breakpoint the first line of the foo() function, see pic
+            }
+            baz(); //call-site for baz
+        </script>
+    </head>
+</html>
