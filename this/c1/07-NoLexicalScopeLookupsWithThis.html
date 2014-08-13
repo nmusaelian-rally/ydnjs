@@ -14,7 +14,14 @@
             /*
              attempting to use 'this' to create a bridge between the lexical scopes of foo() and bar(), so that bar() has access to the variable 'a'
              in the inner scope of foo(). No such bridge is possible. You cannot use 'this' reference to look something up in a lexical scope.
-             **/
+             */
+            
+            /*Ch1 conclusion:
+             *
+             'this' is neither a reference to the function itself, nor is it a reference to the function's lexical scope.
+             'this' is actually a binding that is made when a function is invoked, and what it points to is determined entirely
+             by the call-site where the function is called.
+             */
         </script>
     </head>
 </html>
