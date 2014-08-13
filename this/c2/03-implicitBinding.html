@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                console.log(this.a);
+            }
+            
+            var obj = {
+                a:2,
+                foo:foo
+            };
+            
+            obj.foo(); //2
+            /*
+             * When foo() is plain, undecorated, default binding applies
+             * But if a call-site has a context object (the call-site uses the obj context to reference the function)
+             * the implicit binding rule says that it's that object which should be used for the function call's 'this' binding.
+             */
+        </script>
+    </head>
+</html>
