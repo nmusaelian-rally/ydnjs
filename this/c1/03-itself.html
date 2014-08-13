@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(num){
+                this.count++; //accidentally created a global variable count. 'this' is not pointing at all to function object foo
+                console.log('foo',num);
+            }
+            
+            foo.count = 0;
+            
+            for (var i=0; i < 3; i++) {
+                foo(i);
+            }
+            
+            console.log(foo.count);
+        </script>
+    </head>
+</html>
