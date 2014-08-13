@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function identify(context){
+                return context.name;
+            }
+            
+            function speak(context){
+                console.log("Hi, I'm " + identify(context));
+            }
+            
+            var dog = {
+                name: 'Gromit'
+            };
+            var man = {
+                name: 'Wallace'
+            };
+            
+            speak(man);
+            speak(dog);
+            
+            /*
+             *'this' mechanism (instead of context) provides a more elegant way of implicitly "passing along" an object reference,
+             *leading to cleaner API design and easier re-use.
+            */
+            
+            function id(){
+                return this.name;
+            }
+            
+            function sayHi(){
+                console.log("Hi, I'm " + id.call(this)); //*
+            }
+            
+            sayHi.call(dog);
+        </script>
+    </head>
+</html>
