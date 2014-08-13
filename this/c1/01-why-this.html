@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            function identify(){
+                return this.name
+            }
+            
+            function speak(){
+                console.log("Hi, I'm " + identify.call(this));
+
+            }
+            
+            var dog = {
+                name: 'Gromit'
+            };
+            var man = {
+                name: 'Wallace'
+            };
+            
+            speak.call(man);
+            speak.call(dog);
+        </script>
+    </head>
+</html>
