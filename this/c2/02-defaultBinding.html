@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                console.log(this.a); //'this' points to global object
+            }
+            
+            var a = 2;
+            
+            foo(); //2
+        </script>
+    </head>
+</html>
