@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                console.log(this.a);
+            }
+            var obj = {
+                a:2,
+                foo:foo
+            }
+            var bar = obj.foo; //just another ref to foo itself
+            
+            var a = "oh, noes! global";
+            
+            bar(); //oh, noes! global //call-site is bar(), which is undecorated call - default binding applies
+            
+        </script>
+    </head>
+</html>
