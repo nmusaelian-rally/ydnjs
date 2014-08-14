@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //* implicit binding is lost too when passing by reference
+            //Parameter passing is just an implicit assignment
+            //It's common that function callbacks lose their 'this' binding
+            function foo(){
+                console.log(this.a)
+            }
+            var a = "oh, noes! global";
+            function doFoo(fn){
+                fn();
+            }
+            var obj = {
+                a:2,
+                foo:foo
+            };
+            doFoo(obj.foo); //oh, noes! global
+            //same with built-in function
+            setTimeout( obj.foo, 100 ); //oh, noes! global
+        </script>
+    </head>
+</html>
