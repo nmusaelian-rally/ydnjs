@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //i don't want to mutate the object to include a ref to a function foo, and then use this property function ref as in obj.foo to
+            //bind 'this' to obj
+            //that would be implicit binding
+            
+            function foo(){
+                console.log(this.a);
+            }
+            
+            var obj = {
+                a:2
+            }
+            
+            var a = "oh, noes!global";
+            
+            foo.call(obj); //2
+        </script>
+    </head>
+</html>
