@@ -7,10 +7,10 @@
             
             var obj = {
                 a:2,
-                foo:foo
+                foo:foo //mutate the object to include a reference to foo on itself 
             };
             
-            obj.foo(); //2
+            obj.foo(); //2 //use this property function reference to foo to indirectly (implicitly) bind 'this' to the object.
             /*
              * When foo() is plain, undecorated, default binding applies
              * But if a call-site has a context object (the call-site uses the obj context to reference the function)
