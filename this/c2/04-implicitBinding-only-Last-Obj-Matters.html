@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo() {
+                console.log(this.a);
+            }
+            //order of declarations: obj2 declared before obj1. Otherwise: Uncaught TypeError: Cannot read property 'foo' of undefined
+
+            var obj2 = {
+                a:42,
+                foo:foo
+            };
+            
+            var obj1 = {
+                a:2,
+                obj2:obj2
+            };
+            
+            //var obj2 = {
+            //    a:42,
+            //    foo:foo
+            //};
+            
+            obj1.obj2.foo(); //42
+        </script>
+    </head>
+</html>
