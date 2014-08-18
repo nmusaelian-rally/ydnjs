@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /* Loss of Implicit Binding when accessing a method through a reference instead of directly through its owner object*/
+            var john = {
+                name: 'John',
+                greet: function(person){
+                    console.log("Hi, " + person + ". My name is " + this.name); 
+                }
+            }
+            var fn = john.greet; //does not call a method, but creates a ref to greet method. 'this' stops referencing "owner object john"
+            fn("Mark");
+            
+            /*
+             Binding-sensitive code patterns involve passing method references, which usually happens through two possible means:
+             either you’re assigning a method as a value, or you’re passing a method as an argument (which is essentially the same thing).
+             */
+        </script>
+    </head>
+</html>

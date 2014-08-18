@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var john = {
+                name: 'John',
+                greet: function(person){
+                    console.log("Hi, " + person + ". My name is " + name); //should be this.name for implicit bining to work.
+                }
+            }
+            
+            john.greet("Mark");
+        </script>
+    </head>
+</html>

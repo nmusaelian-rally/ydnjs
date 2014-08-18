@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Person(first, last, age){
+                this.first = first;
+                this.last = last;
+                this.age = age;
+            }
+            
+            Person.prototype = {
+                getFullName: function(){
+                    console.log(this.first + ' ' + this.last);
+                },
+                greet: function(other){
+                    console.log("Hi " + other.first + ", I'm "  + this.first);
+                }
+            }
+            
+            var pushkin = new Person('Alexander', 'Pushkin', 30);
+            var bulgakov = new Person('Mikhail', 'Bulgakov', 40);
+            
+            pushkin.greet(bulgakov); //Hi Mikhail, I'm Alexander  //so far so good
+            
+            function greetManyTimes(n, fn, arg){
+                for (var i=0; i<n; i++){
+                    fn(arg);
+                }
+            }
+            
+            greetManyTimes(3, pushkin.greet, bulgakov); //Hi Mikhail, I'm undefined //we lost binding when passed pushkin.greet by reference
+            
+            
+            /*
+            When you do all your JavaScript heavy lifting by hand, as we just did, you’re usually more aware of such issues.
+            But when you rely on a framework to handle the basics, binding can elude you, leaving you writing simple code that just borks.
+            Consider the following snippet:
+            
+            this.items.each(function(item) {
+                this.markItemAsProcessed(item);
+            });
+            
+            This code will trigger an error stating that the markItemAsProcessed method is undefined.  You just passed each a reference to an anonymous function,
+            so 'this' in there refers to 'window', not to what it was outside each.
+             */
+        </script>
+    </head>
+</html>

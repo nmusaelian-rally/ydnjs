@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Person(first, last, age){
+                this.first = first;
+                this.last = last;
+                this.age = age;
+            }
+            
+            Person.prototype = {
+                getFullName: function(){
+                    console.log(this.first + ' ' + this.last);
+                },
+                greet: function(other){
+                    console.log("Hi " + other.first + ", I'm "  + this.first);
+                }
+            }
+            
+            var pushkin = new Person('Alexander', 'Pushkin', 30);
+            var bulgakov = new Person('Mikhail', 'Bulgakov', 40);
+            
+            pushkin.greet(bulgakov); //Hi Mikhail, I'm Alexander  //so far so good
+            
+            function greetManyTimes(n, obj, fn, arg){
+                for (var i=0; i<n; i++){
+                    fn.apply(obj, [arg]);
+                    //apply allows you to call fn with specific binding. Note, the method does not have to belong to the obj you are binding to.
+                    //As long as the method exists on the bound obj, we're ok because js resolves member access at run time.
+                    
+                }
+            }
+            
+            greetManyTimes(3, pushkin, pushkin.greet, bulgakov)
+        </script>
+    </head>
+</html>
