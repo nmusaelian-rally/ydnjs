@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             It’s nice to have a way to specify binding, as was done in 07-explicit binding,
+             but the problem is, you can only specify it at invocation time.
+             You can’t, say, specify it in advance and then let some other code invoke your properly bound method when it sees fit.
+             This is a major problem, because when we pass method references around, we’re doing just that: letting other code choose when to invoke methods.
+             So what we want is a way to persistently bind a method, so that we get a bound method reference.
+             The only way to achieve this requires us to wrap our original method in another one, that will perform the apply call.
+            */
+            
+            /*  //explicit 
+            function foo() {
+                console.log(this.a);
+            }
+            
+            var obj = {
+                a: 2
+            }
+            
+            foo.call(obj);
+            */
+            
+           function foo(){
+                console.log(this.a); 
+           }
+           
+           var obj = {
+                a:2
+           }
+           
+           var bar = function(){
+                return foo.call(obj);
+           }
+           
+           bar();
+        </script>
+    </head>
+</html>
