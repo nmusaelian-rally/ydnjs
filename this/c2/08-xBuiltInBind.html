@@ -1,7 +1,19 @@
 <html>
     <head>
         <script type="text/javascript">
+            //fn.bind(arg) returns a new function that calls the original function 'fn' with 'this' set to arg
             
+            function foo(something){
+                console.log(this.a, something);
+                return this.a + something
+            }
+             var obj = {
+                a:2
+             }
+             
+             var bar = foo.bind(obj);
+             var b = bar(3);
+             console.log(b);
         </script>
     </head>
 </html>
