@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                console.log(this.a);
+            }
+            //first, mutate the obj to add a ref to foo
+            var obj = {
+                a:222,
+                foo:foo //keep this one here
+                
+            }
+            
+            var a = "global, oh noes!!"
+            //use built-in bind(..)
+            //foo.bind(obj)();
+            //that is the right way of doing it
+            //implicit binding to 'this' can be tricky and lost
+            
+            //obj.foo();
+            
+            //now watch how this binding can be lost when
+            //using a callback
+            
+            function doFoo(fn){
+                fn();
+            }
+            
+            doFoo(obj.foo); //implicit binding to obj was lost
+            //and replaced with default global bindinghttp://screencast.com/t/jFGIJ2ay
+            
+            
+        </script>
+    </head>
+</html>
