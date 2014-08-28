@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Person(who){
+                this.who = who;
+            }
+            
+            Person.prototype = {
+                greet: function(other){
+                    console.log("Hi " + other.who + "I'm " + this.who);
+                }
+            }
+            
+            var svejk = new Person('Svejk');
+            var baloun = new Person('Baloun');
+            
+            svejk.greet(baloun);
+            
+            function greetManyTimes(n, obj, fn, arg){
+                for (var i=0; i<n; i++){
+                    //fn(arg); //implicit binding of greet to svejk will be lost because 'this' will no longer point to 'svejk' when greet is passed by ref
+                    fn.apply(obj,[arg]); //worked. 
+                }
+            }
+            
+            greetManyTimes(2,svejk, svejk.greet,baloun); 
+            //screencast.com/t/5QtzW1QRGf0z
+        </script>
+    </head>
+</html>
