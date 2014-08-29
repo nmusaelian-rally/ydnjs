@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //instead of explicitly passing context
+            //function id(context){
+            //    return context.name;
+            //}
+            //implictly pass along an obj reference
+           function id(){
+                return this.name;
+           }
+           
+           function speak(){
+                console.log("Hi, I'm " + id.call(this));
+           }
+            
+            var dog = {
+                name: 'Gromit2'
+            };
+            var man = {
+                name: 'Wallace2'
+            };
+            
+            speak.call(man);
+            speak.call(dog);
+            //screencast.com/t/GvENMiW6uKR
+            
+        </script>
+    </head>
+</html>
