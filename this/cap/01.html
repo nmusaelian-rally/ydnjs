@@ -19,7 +19,8 @@
             function greetManyTimes(n, obj, fn, arg){
                 for (var i=0; i<n; i++){
                     //fn(arg); //implicit binding of greet to svejk will be lost because 'this' will no longer point to 'svejk' when greet is passed by ref
-                    fn.apply(obj,[arg]); //worked. 
+                    fn.apply(obj,[arg]); //success!
+                    //fn.bind(obj)(arg); //success!
                 }
             }
             
