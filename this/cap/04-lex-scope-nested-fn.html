@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var x = "global";
+            
+            function foo(x){
+                return function(){ //this anonymous func is always executed in the scope of foo
+                    return x;  //if it was return this.x, 3 "global" would be returned
+                }
+            }
+            
+            var a = [];
+            for (var i=0;i<3;i++){
+                a.push(console.log(foo(i)())); //0 1 2
+            }
+        </script>
+    </head>
+</html>

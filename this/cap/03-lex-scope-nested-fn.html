@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var x = "global";
+            function foo(){
+                var x = "local"; //does not overwrite global
+                // x = "local";  //does not overwrite global
+                // this.x = "local"; //overwrites global
+                function bar() {
+                    console.log(x);
+                }
+                bar();
+            }
+            foo(); //local
+            console.log(x);//global
+            
+            /*
+             * bar is always executed in scope of foo.
+             */
+        </script>
+    </head>
+</html>
