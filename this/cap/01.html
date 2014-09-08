@@ -4,28 +4,29 @@
             function Person(who){
                 this.who = who;
             }
-            
             Person.prototype = {
                 greet: function(other){
                     console.log("Hi " + other.who + "I'm " + this.who);
                 }
-            }
+            };
             
             var svejk = new Person('Svejk');
             var baloun = new Person('Baloun');
             
-            svejk.greet(baloun);
+            svejk.greet(baloun);//so far so good
+            //now watch how implicit binding is lost when function is
+            //passed by ref
             
-            function greetManyTimes(n, obj, fn, arg){
-                for (var i=0; i<n; i++){
-                    //fn(arg); //implicit binding of greet to svejk will be lost because 'this' will no longer point to 'svejk' when greet is passed by ref
-                    fn.apply(obj,[arg]); //success!
-                    //fn.bind(obj)(arg); //success!
+            function greetManyTimes(n,obj, fn, arg){
+                for(var i = 0; i< n; i++){
+                    //fn(arg) //just lost the binding
+                    fn.apply(obj,[arg]); //worked!
+                    fn.bind(obj)(arg); 
                 }
             }
             
-            greetManyTimes(2,svejk, svejk.greet,baloun); 
-            //screencast.com/t/5QtzW1QRGf0z
+            greetManyTimes(2, svejk, svejk.greet, baloun);
+            //screencast.com/t/yXhQbjh5y7L
         </script>
     </head>
 </html>

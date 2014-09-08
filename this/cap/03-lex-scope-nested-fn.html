@@ -3,15 +3,16 @@
         <script type="text/javascript">
             var x = "global";
             function foo(){
-                var x = "local"; //does not overwrite global
+                //var x = "local"; //does not overwrite global
+                foo.x = "foobar";
                 // x = "local";  //does not overwrite global
                 // this.x = "local"; //overwrites global
                 function bar() {
-                    console.log(x);
+                    console.log("in bar:", x);
                 }
                 bar();
             }
-            foo(); //local
+            foo(); //local if there is var x = "local" global if var x = "local is commented out". The thing is that it's using the first x it finds.
             console.log(x);//global
             
             /*
