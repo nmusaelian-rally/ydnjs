@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(x){
+                this.x = x;
+            }
+            
+            var bar = new foo(2);//'this' points to bar
+            console.log(bar.x);
+        </script>
+    </head>
+</html>
