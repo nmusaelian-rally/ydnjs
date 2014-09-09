@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var o = {
+                get a() {
+                    return 2;
+                }
+            }
+            
+            console.log(o.a); //Uncaught ReferenceError: a is not defined
+            
+            Object.defineProperty(o, "b", { get: function(){return this.a*2}})
+            
+            console.log(o.a);
+            o.a = 10; //has no effect. We created a property on the object that actually doesn't hold a value,
+            //but whose access automatically results in a hidden function call to the getter function, with whatever value it returns being the result of the property access.
+            //Since we only defined a getter for a, if we try to set the value of a later, the set operation won't throw an error but will just silently throw the assignment away.
+            //Even if there was a valid setter, our custom getter is hard-coded to return only 2, so the set operation would be moot.
+            //A more sensible example is in 08.html, where getter does not return a hardcoded value, and both getter and setter are defined.
+            console.log(o.a);
+            console.log(o.b);
+        </script>
+    </head>
+</html>
