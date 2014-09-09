@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var a = ["foo",42];
+            console.log(a.length); //2
+            a.third = "bar";
+            console.log(a["third"]); //bar
+            console.log(a.length); //2 - adding named properties (regardless of . or [ ] operator syntax) does not change the reported length of the array.
+            a["2"] = "baz"; // a property name that looks like a number will end up instead as a numeric index, and will change the length:
+            console.log(a.length); //3
+            a["10"] = "snafu";
+            console.log(a.length); //11
+            console.log(a); // ["foo", 42, "baz", 10: "snafu", third: "bar"]
+            console.log(a[9]); //undefined
+        </script>
+    </head>
+</html>

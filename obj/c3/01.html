@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *Perhaps one could argue that a function becomes a method, not at definition time, 
+            but during run-time just for that invocation,  depending on how it's called at its call-site 
+            See this\c2\03-implicitBinding.html 
+            Even this interpretation is a bit of a stretch.
+            The safest conclusion is probably that "function" and "method" are interchangeable in JavaScript.
+             **/
+            
+            var obj = {
+                foo: function(){
+                    console.log(this);
+                    console.log("foo")
+                }
+            };
+            
+            var bar = obj.foo;
+            bar(); //this=Window
+            obj.foo();//this=Object {foo:function}
+            
+            //now, as a callback:
+            setTimeout(bar, 5000); //this=Window
+            setTimeout(obj.foo, 5000); //this=Window
+        </script>
+    </head>
+</html>

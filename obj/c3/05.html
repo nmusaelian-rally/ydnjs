@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //"use strict";
+            var a = [];
+            
+            var o = {
+                num: 1,
+                arr: a
+           };
+           
+          console.log(Object.getOwnPropertyDescriptor( o, "num" )); //Object {value: 1, writable: true, enumerable: true, configurable: true} 
+          console.log(Object.getOwnPropertyDescriptor( o, "arr" )); //Object {value: Array[0], writable: true, enumerable: true, configurable: true}
+          
+          Object.defineProperty( o, "const",{
+            value: 100,
+            writable: false, 
+            configurable: false, //if not included defaults to false
+            enumerable: true  //if not included defaults to false
+          }); 
+          
+          console.log(Object.getOwnPropertyDescriptor( o, "const" ));
+          
+          o.const = 99;
+          console.log(o.const); // not writable! silently fails unless "use strict";  Cannot assign to read only property 'const' of #<Object>
+          
+          Object.preventExtensions( o );
+          o.foo = "foo"
+          console.log(o.foo); //undefined 
+        </script>
+    </head>
+</html>

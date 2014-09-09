@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /* internally defined [[Get]] operation for getting a value from a property */
+            var o = {
+                n: 1
+           };
+           var n = "global n";
+           var m = "global m";
+           console.log(o.n); //1
+           console.log(o.m); //undefined
+           console.log(o.name);
+           
+           var o2 = new Object();
+           console.log(o2); //{}
+           console.log(o2.name); //undefined
+           console.log(o2["name"]); //undefined
+           
+           /*
+            *Inspecting only the value results, you cannot distinguish whether a property exists and holds the explicit value undefined,
+            *or whether ther property does not exist and undefined was the default return value after [[Get]] failed to return something explicitly. 
+            */
+           
+           var o3 = {
+                a: undefined
+           };
+           
+           console.log(o3.a); //undefined
+           console.log(o3.b); //undefined
+           
+        </script>
+    </head>
+</html>

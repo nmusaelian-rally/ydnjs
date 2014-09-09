@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //example of JSON-unsafe object. It contains a circular ref
+            var a = [];
+            
+            var o = {
+                num: 1,
+                arr: a
+           };
+           
+           a.push(o);
+           
+           console.log(o);
+           
+           var o2 = JSON.parse(JSON.stringify(o)); //Uncaught TypeError: Converting circular structure to JSON
+        </script>
+    </head>
+</html>

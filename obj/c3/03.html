@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+           
+           var o = {
+                num:1,
+           };
+           
+           var o2 = o;
+           /*
+            *objects which are JSON-safe (that is, can be serialized to a JSON string and then re-parsed to an object with the same structure and values)
+            *can easily be duplicated with:
+           */
+           var o3 = JSON.parse(JSON.stringify(o));
+           
+           o.num = 10;
+           console.log(o.num);   //10
+           console.log(o2.num); //10
+           console.log(o3.num); //1
+           //o3 unlike 02 is not a reference to o, but a full independent obj
+
+           o.foo = "foo";
+           console.log(o2); //Object {num: 10, foo: "foo"} 
+           console.log(o3); //Object {num: 1} 
+        </script>
+    </head>
+</html>
