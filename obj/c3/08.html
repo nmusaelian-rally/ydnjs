@@ -11,34 +11,33 @@
                 }
             }
             
-            o.a = 2;
-            console.log(o.a); //4 
+            o.a = 2; //invokes setter
+            console.log(o.a); //4 invokes getter which returns x
             console.log(o.x); //4
             console.log(o);
             
             console.log(o.hasOwnProperty("a")); //true
             console.log(o.hasOwnProperty("x")); //true
             
-            console.log(this.x); //undefined
+            console.log(this.x); //undefined - there is no global x
             //console.log(a); //Uncaught ReferenceError: a is not defined
-            console.log(this.a); //undefined
+            console.log(this.a); //undefined - there is no global a
             
-            o.a = 3;
+            o.a = 3; //invokes setter
             console.log(o.a); //6
             console.log(o.x); //6
             
             console.log(Object.getOwnPropertyNames(o)); //["a", "x"]
             //get and set keywords:
-            //Following them is the property they relate to (fullName)
+            //Following get and set keywords is the property they relate to (e.g. fullName below)
             //and a function body that defines the behaviour
             //when the property is accessed
-            //(name = person.fullName) or modified (person.fullName = 'Some Name').
             
             var person = {
-                firstName: "fname",
-                lastName: "lname",
+                firstName: "default fname",
+                lastName: "default lname",
                 get fullName(){
-                    return firstName + " " + lastName;
+                    return "getter:" + this.firstName + " " + this.lastName; //make sure to use this.firstName, not firstName, otherwise Uncaught ReferenceError: firstName is not defined 
                 },
                 set fullName(n){ //fn, ln will not work: setter functions must have one arg
                     var name = n.toString().split(" ");
@@ -48,23 +47,27 @@
             }
             //compare to 07o3-recognizingBindingCodePatterns-fix.html
             //how objects are created
-            
-            person.fullName = "Josef Svejk";
+            console.log(person.fullName); //inokes getter
+            person.fullName = "Josef Svejk"; //invokes setter
+            console.log(person.fullName); 
             console.log(person);
             console.log(person.firstName); //Josef
-            //console.log(person.fullName); //Uncaught ReferenceError: firstName is not defined 
-            console.log(person.fullName = "Rudolph Lucas");
-            console.log(person.firstName); //Rudolph
+            
             
             var obj = {
                 get a(){
-                    console.log("...defies the behavior when property is accessed")
+                    console.log("...defines the behavior when property is accessed")
+                },
+                set a(arg){
+                    console.log('arg...',arg);
                 }
             }
             
             obj.a; // "...defies the behavior when property is accessed"
             
             //object dumps of o and person show italisized a(...) and fullName(...)
+            
+            obj.a = 2; //arg... 2
         </script>
     </head>
 </html>
