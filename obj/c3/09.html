@@ -1,0 +1,60 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *Objects in JS have both a literal form (such as var a = { .. }) and a constructed form (such as var a = new Array(..)).
+             *The literal form is almost always preferred, but the constructed form offers, in some cases, more creation options.
+             **/
+            
+            function Obj(a) {
+                this.a = a
+            };
+            
+            var obj = new Obj(2);
+            obj.b = 4;
+            
+            //in looks for property name, not a value. This diff is important with respect to arrays,
+            //as the temptation to try a check like 4 in [2, 4, 6] is strong, but lt won't behave as expected.
+            //use 'for' in arrays, and 'in' in objects
+            (console.log("a" in obj)); //true 
+            (console.log("b" in obj)); //true
+            
+            console.log(obj.hasOwnProperty("a"));//true
+            console.log(obj.hasOwnProperty("b"));//true
+            
+            //properties don't have to contain values - they can be accessor properties with getters/setters.
+            //here a does not contain value:
+            var o = {
+                get a(){
+                    return "getting " + this.x
+                },
+                set a(x){
+                    this.x = x
+                }
+            }
+            
+            o.a = 2;
+            console.log(o.a); //2
+            console.log(o["a"]);//2 Objects are collections of key/value pairs. The values can be accessed as properties, via .propName or ["propName"]
+            
+            //properties can be enumerable on not, which controls if they show up in 'for..in' loop or in 'keys'
+            
+            Object.defineProperty(o,"b",{enumerable:false,value:42});
+            (console.log("b" in o)); //true
+            console.log(o.hasOwnProperty("b"));//true
+            
+            var k = Object.keys(o);
+            console.log(k); //["a", "x"] "b" is not returned
+            
+            for(property in o){
+                console.log(property); //a //x //"b" is not returned
+            }
+            
+            console.log(o.propertyIsEnumerable("b")); //false
+            
+            
+            
+
+        </script>
+    </head>
+</html>
