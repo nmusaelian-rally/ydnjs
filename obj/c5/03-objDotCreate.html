@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            /*
+             *Bar.prototype = Foo.prototype doesn't create a new object for Bar.prototype to be linked to.
+             *It just makes Bar.prototype be another reference to Foo.prototype, which effectively links Bar directly
+             *to the same object as Foo links to: Foo.prototype.
+             *This means when you start assigning, like Bar.prototype.myLabel = ...,
+             *you're modifying not a separate object but the shared Foo.prototype object itself,
+             *which would affect any objects linked to Foo.prototype.
+             *This is almost certainly not what you want.
+             *If it is what you want, then you likely don't need Bar at all,
+             *and should just use only Foo and make your code simpler.
+             **/
+            
+            //here's the typical "prototype style" code that creates such delegation links
+            function Foo(name) {
+                this.name = name;
+            }
+            
+            Foo("svejk"); //global 'name is set
+            
+            console.log(this.name); //svejk
+            
+            Foo.prototype.getName = function() {
+                console.log('name:', this.name);
+                return this.name;
+            };
+            
+            //Foo.getName(); //Uncaught TypeError: undefined is not a function
+            
+            var foo = new Foo("baloun");
+            foo.getName(); //baloun 
+            
+            console.log('foo.name:', foo.name); //baloun
+            //foo.name is not the same as global this.name
+            //rule #1:
+            /*Is the function called with new (new binding)? If so, 'this' is the newly constructed object.
+            var bar = new foo()*/
+
+            
+            function Bar(name,label){
+                console.log('this in Bar()', this);
+                Foo.call(this, name);
+                this.label = label;
+            }
+            
+            Bar("random", "dude"); //this points to global window.
+            //Later when Bar() is called with 'new' keyword this points to the new object
+            
+           
+           
+           //"make a new 'Bar dot prototype' object that's linked to 'Foo dot prototype'."
+           // don't do: Bar.prototype = Foo.prototype;
+            Bar.prototype = Object.create(Foo.prototype);
+            
+            Bar.prototype.getLabel = function(){
+                console.log('label:', this.label);
+                return this.label;
+            }
+            var bar = new Bar("baloun","glutton"); //'this' is Bar {getLabel: function, getName: function} 
+            bar.getName();//baloun, or undefined if Foo.call(this, name) is commented out
+            bar.getLabel();
+            console.log(bar.name);//baloun or undefined if Foo.call(this, name) is commented out
+            
+            
+            function Baz(something){
+                this.name = something;
+            }     
+            //foo.getLabel();//Uncaught TypeError: undefined is not a function. getLabel() exists on Bar.prototype, but not on Foo.prototype
+        </script>
+    </head>
+</html>

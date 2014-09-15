@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *"Inheritance" implies a copy operation, and JavaScript doesn't copy object
+             *properties (natively, by default). Instead, JS creates a link between two objects,
+             *where one object delegates property/function access to another object. 
+             */
+            
+            /*what not to do...*/
+            
+            function Foo(){}
+            console.log(Foo.hasOwnProperty("prototype")); //true
+            
+            //f is internally [[Prototype]] linked to the Foo.prototype object.
+            var f = new Foo(); //constructor call
+            console.log(Object.getPrototypeOf(f)); // Foo {}
+            console.log(Object.getPrototypeOf(f)===Foo.prototype); //true
+            
+            //What exactly leads us to think Foo is a "class"? (besides "new" keyword).
+            //Foo.prototype has a constructor property:
+            
+            console.log(Foo.prototype.constructor); // function Foo(){}
+            console.log(f.hasOwnProperty("constructor")); //false
+            console.log(f.constructor); // function Foo(){}
+            
+            var o ={
+                a:2
+            }
+            f.constructor = o;
+            console.log(f.hasOwnProperty("constructor")); //oh-oh! true
+            //now this constructor thing does not seem so meaningful
+            //o did not construct f, did it?
+            
+            //var f2 = new f(); //TypeError: object is not a function
+            f2 = Object.create(f);
+            console.log(f2); //Object {constructor: Object}
+            console.log(f2.constructor);  //Object {a: 2}
+            
+            
+        </script>
+    </head>
+</html>

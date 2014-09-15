@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var o = {
+                a:2
+            };
+            var o2 = Object.create(o);//creates an obj o2 with protptype link to obj o
+            console.log(o2.a);
+            for(prop in o2){
+                console.log(prop); //a
+            }
+            console.log(o2.hasOwnProperty("a")); //false
+            o2.a = 1;
+            console.log(o2.hasOwnProperty("a")); //true
+            console.log(o2.a); //1 - changing the value of the existing property
+            console.log(o.a); //2
+            //even more insidious case of shadowing when property is incremented on obj that "inherits" a:
+            var o3 = Object.create(o);
+            console.log(o3.hasOwnProperty("a")); //false
+            o3.a++;
+            console.log(o3.hasOwnProperty("a")); //true
+        </script>
+    </head>
+</html>
