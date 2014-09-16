@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *without any of the unnecessary complication of new functions acting as classes
+             *and constructor calls, confusing .prototype and .constructor references,
+             *or any of that extra stuff.
+             */
+            var foo = {
+                saySomethingGood:function(){
+                    console.log("you look great!")
+                }
+            }
+            
+            var bar = Object.create(foo);
+            bar.saySomethingGood();
+        </script>
+    </head>
+</html>
