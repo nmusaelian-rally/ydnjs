@@ -63,12 +63,20 @@
             bar.getName();//baloun, or undefined if Foo.call(this, name) is commented out
             bar.getLabel();
             console.log(bar.name);//baloun or undefined if Foo.call(this, name) is commented out
-            
-            
-            function Baz(something){
-                this.name = something;
-            }     
+               
             //foo.getLabel();//Uncaught TypeError: undefined is not a function. getLabel() exists on Bar.prototype, but not on Foo.prototype
+            
+            var appear = Foo.prototype.isPrototypeOf(bar);
+            console.log("in the entire [[Prototype]] chain of bar, does Foo.prototype ever appear?", appear);
+            
+            var isPrototype = foo.isPrototypeOf(bar);
+             console.log('isPrototype?', isPrototype); //false
+             
+            var proto = Object.getPrototypeOf(bar);
+            console.log('proto', proto); //Foo {getLabel: function, getName: function}
+            
+            var dunderProto = bar.__proto__;
+            console.log('dunder proto', dunderProto); //Foo {getLabel: function, getName: function}
         </script>
     </head>
 </html>
