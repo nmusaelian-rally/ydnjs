@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var drawing = {
+                draw: function(thinking){
+                    this.thinking = thinking;
+                    console.log(this.thinking);
+                }
+            };
+            
+            drawing.draw("linear");
+            
+            var painting = Object.create(drawing);
+            
+            //no property name shadowing!
+            painting.paint = function(thinking1, thinking2){
+                this.draw(thinking1); //painting delegates to drawing
+                this.thinking2 = thinking2;
+                console.log(thinking2);
+            }
+            
+            painting.paint("volume", "open form");
+            
+        </script>
+    </head>
+</html>
