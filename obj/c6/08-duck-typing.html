@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Duck(){
+                //...
+            }
+            
+            Duck.prototype.quack = function(){
+                console.log("quack!")
+            }
+            
+            Duck.prototype.walk = function(){
+                console.log("walk");
+            }
+            
+            var donald = new Duck();
+            
+           
+            
+            function Dog(){
+                //...
+            }
+            
+            Dog.prototype.walk = function(){
+                console.log("walk");
+            }
+            
+            var gromit = new Dog();
+            
+            function isDuck(obj){
+                 if ((obj.quack) && (obj.walk)){
+                    obj.quack();
+                    obj.walk();
+                    console.log( "It's a duck");
+                }
+                else {
+                    console.log ("It's not a duck");
+                }  
+            }
+            
+            isDuck(donald); //quack! walk It's a duck 
+            isDuck(gromit); //It's not a duck
+        </script>
+    </head>
+</html>

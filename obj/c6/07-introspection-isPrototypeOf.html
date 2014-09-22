@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var TaskA = {
+                init: function(id){
+                    this.id = id;
+                },
+                print: function(){
+                    console.log(this.id)
+                }
+            };
+            
+            //var t1 = Object.create(TaskA);
+            //t1.init(1);
+            //t1.print(); //1
+            
+            var TaskB = Object.create(TaskA);
+            
+            TaskB.setup =  function(id,tag){
+                this.init(id);
+                this.tag =  tag
+            };
+            
+            TaskB.printTask = function(){
+                this.print();
+                console.log(this.tag)
+            };
+
+            
+            var t2 = Object.create(TaskB);
+            t2.setup(2,'ez');
+            t2.printTask();
+            
+            console.log(TaskA.isPrototypeOf(t2)); //true
+            console.log(TaskB.isPrototypeOf(t2)); //true
+            console.log(Object.getPrototypeOf(t2)); //Object {setup: function, printTask: function, init: function, print: function}
+            
+        </script>
+    </head>
+</html>

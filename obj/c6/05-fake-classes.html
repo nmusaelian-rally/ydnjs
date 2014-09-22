@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Foo(who){
+                this.who = who;
+            }
+            
+            Foo.prototype.greet = function(){
+                console.log( "Hello ",this.who);
+            }
+            
+            // Foo.greet = function(){
+            //    console.log( "Hello ",this.who);
+            //}
+            
+            var foo = new Foo("someone");
+            foo.greet("someone"); //Uncaught TypeError: undefined is not a function if Foo.greet instead of Foo.prototype.greet
+            
+            
+        </script>
+    </head>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            Foo = {
+                init: function(who){
+                    this.me = who;
+                },
+                identify: function(){
+                    return "I am " + this.me;
+                }
+            };
+            
+            Bar = Object.create(Foo);
+            Bar.speak = function(){
+                console.log("Hello " + this.identify());
+            }
+            
+            var b1 = Object.create(Bar);
+            b1.init("Wallace");
+            var b2 = Object.create(Bar);
+            b2.init("Gromit");
+            b1.speak();
+            b2.speak();
+            
+        </script>
+    </head>
+</html>
