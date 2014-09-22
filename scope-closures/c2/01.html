@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /**
+            No matter where a function is invoked from, or even how it is invoked, its lexical scope is only defined by where the function was declared.
+            */
+            function foo(a){
+                var b = a*2;
+                function bar(c){
+                    //var c = 42;
+                    console.log(a,b,c) //2,4,6 or in case of shadowing, when var c = 42 is not commented out, 2,4,42
+                }
+                bar(a*3);
+            }
+            foo(2);
+        </script>
+    </head>
+</html>

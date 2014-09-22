@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             * The lexical scope look-up process only applies to first-class identifiers, such as the a in prev example.
+             * If you had a reference to foo.bar, the lexical scope look-up would apply to finding the foo identifier,
+             * but once it locates that variable, object property-access rules take over to resolve the bar and baz properties, respectively.
+             **/
+            
+            var foo = {
+                a:2
+            };
+            
+            function doSomething(o){
+                console.log(o.a);
+            }
+            
+            var a = 42;
+            doSomething(foo); //2
+        </script>
+    </head>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var x = "global";
+            function foo(){
+                foo.x = "local";
+                console.log(foo.x); //local
+                console.log(x); //global
+                var y = "something";
+            }
+            
+            foo();
+            console.log(foo.x); //local
+            console.log(foo.y); //undefined
+            //console.log(y); //Uncaught ReferenceError: y is not defined 
+        </script>
+    </head>
+</html>
