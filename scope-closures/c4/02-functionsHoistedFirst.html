@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        /*
+        Both function declarations and variable declarations are hoisted.
+        But a subtle detail (that can show up in code with multiple "duplicate" declarations) is that functions are hoisted first, and then variables.
+        */
+        
+        foo(); //1 or 42 if subsequent function declaration function foo is not commented out
+        var foo; //dupe (thus ignored) declaration, even though it came before the function foo() declaration, because func declarations are hoisted before normal variables.
+        
+        function foo(){
+            console.log(1);
+        }
+        
+        foo = function(){ //Declarations themselves are hoisted, but assignments, even assignments of function expressions, are not hoisted.
+            console.log(2);
+        }
+        
+        //b(); //TypeError: undefined is not a function //Declarations themselves are hoisted, but assignments, even assignments of function expressions, are not hoisted.
+        //bar(); //Uncaught ReferenceError: bar is not defined if there is assignment var b = function bar(){... } If assignment removed, bar() returns 10
+        var b = function bar(){
+            console.log(10);
+        };
+        
+        //While duplicate var declarations are effectively ignored, subsequent function declarations override previous ones.
+        //function foo(){
+        //    console.log(42);
+        //}
+        </script>
+    </head>
+</html>

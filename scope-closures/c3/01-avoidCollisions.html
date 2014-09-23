@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //avoid collisions by using local variables
+            function foo(){
+                function bar(a){
+                    //i = 3; //will cause infinite loop because it overwrites i declared in foo, in for-loop. i is set to a fixed value of 3 and that will forever remain < 10.
+                    //The assignment inside bar(..) needs to declare a local variable to use
+                    var i = 3;
+                    console.log(a + i); //11
+                }
+                for(var i =0; i<10; i++){
+                    bar(i*2); 
+                }
+            }
+            foo();
+        </script>
+    </head>
+</html>

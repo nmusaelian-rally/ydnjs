@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //Function declarations are hoisted. Function expressions are not.
+            //foo is hoisted and attached to the enclosing scope (global) of this program, so foo() doesn't fail as a ReferenceError. But foo has no value yet.
+            
+            baz(); //baz
+            foo();    //TypeError:  error undefined is not a function 
+            //bar(); //ReferenceError: bar is not defined 
+            var foo = function bar(){
+                console.log('bar');
+            }
+            
+            function baz(){
+                console.log('baz');
+            }
+        </script>
+    </head>
+</html>

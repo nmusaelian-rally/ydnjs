@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var a = 2;
+            function foo(){
+                var a = 3;
+                console.log('inside foo', a); //3
+            }
+            foo();
+            console.log('outside foo', a); //2
+            
+            //works, but there are drawbacks:
+            //1. Identifier name foo itself "pollutes" the enclosing scope (global, in this case)
+            //2. We also have to explicitly call the function by name (foo()) so that the wrapped code actually executes.
+            
+            //here is solution for both:
+            
+            var b =2;
+            (function bar(){
+                var b = 3;
+                console.log('inside inline function expression', b); //3
+            })(); //IIFE: Immediately Invoked Function Expression.
+            console.log('outside foo', b); //2
+            
+            /*
+             * In the first snippet, the name foo is bound in the enclosing scope, and we call it directly with foo().
+             * In the second snippet, the name bar is not bound in the enclosing scope, but instead is bound only inside of its own function.
+             * (function bar(){ .. }) as an expression means the identifier bar is not found in the outer scope.
+             *  Hiding the name bar inside itself means it does not pollute the enclosing scope unnecessarily.
+             */   
+        </script>
+    </head>
+</html>
