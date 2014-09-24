@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var globalfn;
+            
+            function foo(){
+                var a = 42;
+                
+                function bar(){
+                    console.log(a);
+                }
+                
+                globalfn = bar;
+                
+            };
+            
+            function baz(fn){
+                fn();
+            }
+            
+            foo();
+            baz(globalfn);
+        </script>
+    </head>
+</html>

@@ -1,0 +1,12 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function wait(message){
+                setTimeout(function mytimer(){console.log(message);},1000);
+            }
+            wait("ok?");
+            //mytimer() has a scope closure over the scope of wait(),
+            //keeping and using a reference to the variable 'message'.
+        </script>
+    </head>
+</html>

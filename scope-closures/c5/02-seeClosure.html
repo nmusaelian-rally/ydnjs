@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *any of the various ways that functions can be passed around as values,
+             *and invoked in other locations, are all examples of closure.
+             **/
+            function foo() {
+                var a = 2;
+
+                function baz() {
+                    console.log( a ); // 2
+                }
+
+                bar( baz );
+            }
+
+            
+            function bar(fn) {
+                fn(); 
+            }
+            
+            foo();
+            
+        </script>
+    </head>
+</html>

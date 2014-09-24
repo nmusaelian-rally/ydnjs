@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*Closure lets the function continue to access the lexical scope it was defined in at author-time.*/
+            function foo(){
+                var a = 2;
+                function bar(){
+                    console.log(a);
+                }
+                return bar;
+            }
+            
+            var baz = foo(); //returns bar
+            baz(); //bar() call 
+            
+            
+            //it is necessary bot not enough that bar has access to foo's lexical scope.
+            //what makes it a 'closure' is that bar() call happens outside of author-time foo scope, after foo executes
+        </script>
+    </head>
+</html>

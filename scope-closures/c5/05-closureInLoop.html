@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            for(var i=0;i<5;i++){
+                setTimeout(function print(){console.log('i',i);},i*1000); //prints 5 five times
+            }
+            
+            //the output is reflecting the final value of the i after the loop terminates.
+            //all those print() function callbacks would still run strictly after the completion of the loop,
+            //and thus print 6 each time.
+            
+            //the way scope works, all 5 of those functions, though they are defined separately in each loop iteration,
+            //all are closed over the same shared global scope, which has, in fact, only one 'i' in it.
+            
+            //we need a new closured scope for each iteration of the loop
+            //so that each timeout function 'print' callback is closing
+            //over its own scope creted by Immediately Invoked Function Expression
+            
+            for (var j=0; j<5; j++){
+                (function(){
+                   setTimeout(function print(){console.log('j',j);},j*1000); //prints 5 five times
+                })();
+            }
+            
+            //but this is not enough to have a scope to close over if that scope is empty. 
+            //It needs its own variable, with a copy of the 'j' value at each iteration.
+            
+            for (var j=0; j<5; j++){
+                (function(){
+                   var k = j;
+                   setTimeout(function print(){console.log('k',k);},k*1000); //prints 0,1,2,3,4
+                })();
+            }
+            
+            //works! IIFE created new scope per-iteration. We needed a per-iteration block scope.
+            
+            //Another variation of it:
+            
+            for (var j=0; j<5; j++){
+                (function(k){
+                   setTimeout(function print(){console.log('k',k);},k*1000); //prints 0,1,2,3,4
+                })(j);
+            }
+        </script>
+    </head>
+</html>
