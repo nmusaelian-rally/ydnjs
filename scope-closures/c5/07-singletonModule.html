@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var x=(function X(){
+                var a = 42;
+                var arr = ['apple','orange'];
+                function foo(){
+                    console.log(a);
+                }
+                function bar(){
+                    console.log(arr.join('...'));
+                }
+                return {
+                    foo:foo,
+                    bar:bar
+                }
+            })();
+            
+            x.foo();
+            x.bar();
+            
+            //singleton module created by using immediately invoked function expression.
+            //non-singleton module allows creation multiple modules every time outer func is called (06.html)
+        </script>
+    </head>
+</html>

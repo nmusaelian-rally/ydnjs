@@ -1,0 +1,40 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function X(){
+                var a = 2;
+                var arr = [1,2,3];
+                function foo(){
+                    console.log(a);
+                }
+                function bar(){
+                    console.log(arr.join("..."));
+                }
+                return { //obj we return has refs to inner functions, but not to our inner data variables. 
+                    foo:foo,
+                    bar:bar
+                }
+            }
+            
+            var x = X(); //execute the outer function to create the inner scope and the closures.
+            x.foo();
+            x.bar();
+            
+            /*
+             
+             requirements for the module:
+
+            1. There must be an outer enclosing function, and it must be invoked at least once
+            (each time creates a new module instance).
+
+            2. The enclosing function must return back at least one inner function,
+            so that inner function has closure over the private scope, and can access and/or modify that private state.
+             
+            When we transport foo and bar outside of the lexical scope, by way of property references on the object
+             we return, closure can be observed and exercised.
+             
+             */
+             
+        </script>
+    </head>
+</html>
