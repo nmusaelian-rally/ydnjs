@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            var a = "too bad";
+            
+            var obj = {
+                a:"ok"
+            };
+            
+            function foo(x){
+                var args = Array.prototype.slice.call(arguments);
+                args.join();
+                console.log(this.a + " " + args);
+            }
+            
+            foo.a = "what a mess!";
+            
+            foo("apple"); //too bad apple
+            foo.apply(obj,["apple","orange"]); //ok apple,orange
+            foo.apply(foo,["apple","orange"]); //what a mess! apple,orange
+        </script>
+    </head>
+</html>

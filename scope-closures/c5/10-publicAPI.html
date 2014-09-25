@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var foo = function CoolModule(tag){
+                function print(){
+                    console.log(tag);
+                }
+                function printCaps(){
+                    console.log(tag.toUpperCase());
+                }
+                function change() {
+                    publicAPI.print = printCaps;
+                }
+                var publicAPI =  {
+                    print:print,
+                    change: change
+                }
+                return publicAPI;
+            }
+            
+            var f = foo("foobar");
+            f.print(); //foobar
+            f.change();
+            f.print(); //FOOBAR
+        </script>
+    </head>
+</html>

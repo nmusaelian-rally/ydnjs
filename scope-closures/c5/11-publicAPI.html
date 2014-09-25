@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var foo = function Contraption(tag){
+                function cook(){
+                    console.log("Autochef " + tag);  
+                }
+                function  tryToSleep(){
+                    console.log("Snoozatron " + tag);
+                }
+                function goHaywire(){
+                    publicApi.cook = publicApi.yellForHelp
+                }
+                function yellForHelp() {
+                    console.log("Grome-e-e-t!!!!");
+                }
+                var publicApi = {
+                    cook:cook,
+                    tryToSleep:tryToSleep,
+                    goHaywire:goHaywire,
+                    yellForHelp:yellForHelp
+                }
+                return publicApi;
+            }
+            
+            var f = foo("not a cracking toast");
+            f.cook(); //Autochef not a cracking toast
+            f.tryToSleep(); //Snoozatron not a cracking toast 
+            f.goHaywire();
+            f.cook();  //Grome-e-e-t!!!!  
+        </script>
+    </head>
+</html>

@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Dog(who){
+                function greet(){
+                    console.log("Hello, I am ", who);
+                }
+                return {
+                    greet:greet
+                }
+            }
+            var gromit = Dog("Gromit");
+            var preston = Dog("Preston");
+            gromit.greet();
+            preston.greet();
+        </script>
+    </head>
+</html>

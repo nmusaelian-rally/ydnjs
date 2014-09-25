@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var wrongTrousers = (function(){
+                var dog = "Gromit";
+                var man = "Wallace";
+                function foo(){
+                    console.log(man);
+                }
+                function repair(){
+                    console.log(dog);
+                }
+                return {
+                    foo:foo,
+                    repair:repair
+                }
+            })();
+            
+            wrongTrousers.foo();
+            wrongTrousers.repair();
+        </script>
+    </head>
+</html>
