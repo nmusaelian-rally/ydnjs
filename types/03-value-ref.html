@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var a = 2;
+            var b = a; //b is copy
+            b++;
+            console.log(a, b); //2,3
+            
+            var c = [1,2,3];
+            var d = c; //by reference, both point to the same array. Equal peer references to the value
+            d.push(4);
+            console.log(c, d); //[1, 2, 3, 4] [1, 2, 3, 4]
+        </script>
+    </head>
+</html>

@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            //functions are objects, with their properties, e.g. length
+            var foo = function foo(arg1,arg2){
+                console.log(arg1,arg2)
+            }
+            console.log(foo.length); //2, number of arguments
+            
+            //In js, variables don't have types -- values have types. Variables can hold any value, at any time.
+            //typeof asks "what's the type of the value in the variable?"
+            
+            //Variables which have no value currently, actually have the undefined value.
+            var a;
+            console.log(a); //undefined 
+            //There's also a special behavior associated with typeof as it relates to undeclared variables that even further reinforces the confusion.
+            console.log(typeof(a)); //undefined
+            console.log(typeof(b)); //undefined 
+            
+            //Undefined and Undeclared not the same thing
+            console.log(b); //Uncaught ReferenceError: b is not defined
+            //It'd be nice if the browsers said something like "b is not found" or "b is not declared", instead of "b is no defined"
+            //because "undefined" and "is not defined" are very different things    
+        </script>
+    </head>
+</html>

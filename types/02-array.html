@@ -1,0 +1,13 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(){
+                var arr = Array.prototype.slice.call(arguments);
+                arr.push("bam");
+                console.log(arr); //["bar", "baz", "bam"] 
+            }
+            
+            foo("bar","baz");
+        </script>
+    </head>
+</html>
