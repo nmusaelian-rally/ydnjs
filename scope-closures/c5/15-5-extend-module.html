@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var Module = (function(){
+                var privateMethod = function(){
+                    console.log('private method')
+                }
+                var someMethod = function(){
+                    console.log('some public method')
+                }
+                return{
+                    someMethod : someMethod
+                }
+            })();
+            
+            var ModuleTwo = (function(){
+                Module.anotherMethod = function(){
+                    console.log('another public method')
+                }
+                return Module;
+            })(Module || {});
+            
+            Module.someMethod(); //some public method 
+            Module.anotherMethod(); //another public method 
+        </script>
+    </head>
+</html>

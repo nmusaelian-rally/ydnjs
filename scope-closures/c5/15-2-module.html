@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var Module = (function(){
+                
+                var myObject = {};
+                var privateMethod = function(){
+                    console.log('private method');
+                }
+                myObject.publicMethod = function(){
+                    console.log('public method');
+                }
+                return myObject;
+            })();
+            Module.publicMethod();
+            /*
+             * See 15-3-module.html where we build on this.
+             *
+            some consider this syntax better then a similar alternaive:
+                var myObject = {
+                    publicMethod: function(){
+                        console.log('public method');
+                    }
+                }
+            because
+            myObject.publicMethod = function(){
+                    console.log('public method');
+                }
+            makes debugging easier as the JavaScript interpreter will render the code in the order we declare, rather than hoisting function declarations.
+            
+             **/
+        </script>
+    </head>
+</html>

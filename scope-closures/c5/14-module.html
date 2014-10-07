@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            var myObj = {
+                get a(){
+                    return this._a_
+                },
+                set a(val){
+                    this._a_ = val*2;
+                }
+            }
+            var f = (function CoolModule(obj){
+                function privateSetter(){
+                    obj.a = 2;
+                }
+                function privateGetter(){
+                    return obj.a
+                }
+                var publicApi = {
+                    moduleGetter:privateGetter,
+                    moduleSetter:privateSetter
+                }
+                return publicApi;
+            })(myObj);  //import global myObj into the module *
+            
+            f.moduleSetter();
+            var foo = f.moduleGetter();
+            console.log(foo);
+            
+            /*
+             * Instead of myObj it could be jQuery that we import into the module
+             
+             var UTIL = (function (originalUTIL, $) {
+                var my = originalUTIL.ajax;
+
+                my.get = function (url, params, callback) {
+                    return $.getJSON(url, params, callback);
+                };
+                // etc...
+                return my;
+            }(UTIL, jQuery));
+
+             */
+        </script>
+    </head>
+</html>

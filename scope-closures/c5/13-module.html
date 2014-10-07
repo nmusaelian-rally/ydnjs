@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var f = (function CoolModule(id){
+                function privateMethod(){
+                    console.log(id + ' module');
+                }
+                var publicApi = {
+                    moduleMethod:privateMethod
+                }
+                return publicApi;
+            })("foo");
+            
+            f.moduleMethod();
+        </script>
+    </head>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+           var Module = (function(){
+                var privateMethod = function(name){
+                    console.log('hi, ' + name)
+                }
+                
+                var privateArray = [];
+                
+                var publicMethodOne = function(text){
+                    privateMethod(text);
+                }
+                
+                var publicMethodTwo = function(text){
+                    privateArray.push(text);
+                    console.log(privateArray);
+                }
+                return {
+                    one : publicMethodOne,
+                    two : publicMethodTwo
+                }
+           })();
+           
+           Module.one('Gromit');
+           Module.two('Snoozatron');
+        </script>
+    </head>
+</html>

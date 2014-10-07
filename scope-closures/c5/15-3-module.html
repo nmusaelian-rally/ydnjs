@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+           var Module = (function(){
+                 var privateMethod = function(){
+                    console.log('privite method');
+                };
+                var publicMethodOne = function(){
+                    console.log('public method one');
+                };
+                var publicMethodTwo = function(){
+                    console.log('public method two');
+                };
+            
+                return {
+                    one: publicMethodOne,
+                    two: publicMethodTwo
+                }
+           })();
+           
+           Module.one();
+           Module.two();
+           
+           //if I make some methods private, how can I call them? See 15-4-module.html
+        </script>
+    </head>
+</html>
