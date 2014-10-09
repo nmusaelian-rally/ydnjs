@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //a solution of closure in a loop
+            /*
+             *Because the scope container in javascript is a function,
+             *we use additional functions to bind variables to different scopes.
+             *In this example we use the function 'clicker' to make a closure that contains
+             *the correct value for num which becomes number in the closure.
+             */
+            window.onload = function(){  //if I don't wrap my code into window.onload handler body is null (we need to create all elements before executing js) 
+                var numbers = [1,2,3,4,5];
+                for (i in numbers){
+                    document.body.appendChild(document.createElement('br'));
+                    var num = numbers[i];
+                    var anchor = document.createElement('A');
+                    anchor.setAttribute('href', '#');
+                    anchor.appendChild(document.createTextNode(num));
+                    document.body.appendChild(anchor);
+                    
+                    (function(){
+                        var _num = num;
+                        anchor.addEventListener('click', function(event){
+                            console.log('my num', _num); 
+                            event.preventDefault();
+                        },false);
+                    })();
+                }
+            }
+           
+        </script>
+    </head>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //demo the problem of closure in a loop: defining functions in a loop. 
+            window.onload = function(){  //if I don't wrap my code into window.onload handler body is null (we need to create all elements before executing js) 
+                var numbers = [1,2,3,4,5];
+                for (i in numbers){
+                    document.body.appendChild(document.createElement('br'));
+                    var num = numbers[i];
+                    var anchor = document.createElement('A');
+                    anchor.setAttribute('href', '#');
+                    anchor.appendChild(document.createTextNode(num));
+                    document.body.appendChild(anchor);
+                    
+                    anchor.addEventListener('click', function(event){
+                        console.log('my num', num); //click on link and observe that in console all of them say the same "my num 5". 
+                        event.preventDefault();
+                    },false);
+                    
+                }
+            }
+            /*
+             *The event listener uses a closure to refer to num however, it doesn’t maintain the value of num from when the function was declared
+             *but instead maintains the last know value of num. Which just happens to be 5.
+             **/
+           
+        </script>
+    </head>
+</html>
