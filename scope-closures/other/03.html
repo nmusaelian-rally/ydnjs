@@ -1,0 +1,49 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function declareConjunctions(){
+                var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+                for(var i=0; i<conjunctions.length; i++){
+                    var conjunction = conjunctions[i];
+                    String.prototype[conjunctions[i]] = function (that){ //defining six new methods/functions for String instances. 
+                        return this + ' ' + conjunction + ' ' + that;
+                    }
+                }
+            }
+            
+            declareConjunctions();
+            
+            console.log("miles davis".before("wynton marsalis")); //miles davis outside wynton marsalis
+            console.log("head".inside("hat")); //head outside hat
+            
+            /*Variables are "hoisted" to the beginning of the function that immediately encloses them.
+             The interpreter rearranges things so it looks like this:
+             
+             function declareConjunctions () {
+                var conjunctions, conjunction;
+
+                conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+
+                for (var i=0; i<conjunctions.length; i++) {
+                    conjunction = conjunctions[i];
+                    String.prototype[conjunctions[i]] = function (that) {
+                        return this + ' ' + conjunction + ' ' + that;
+                    };
+                }
+            }
+            
+            There is one and only only one conjunction variable created when you invoke declareConjunctions.
+            The fact that the var keyword was placed inside a for loop is irrelevant.
+            
+            Inside each of six functions, we refer to the variable conjunction.
+            We might think that when each of our functions are invoked they will refer to its value when the function was created.
+            This is not the case.
+            Each of our functions simply stores a reference to the variable conjunction and when the function is invoked,
+            it looks up the value at invocation time, not definition time. Its value at function definition time is irrelevant.
+            
+            To fix this problem we make sure that each of the six functionswe create has their own conjunction variable
+            rather than having them all share the same variable. See 04.html
+             **/
+        </script>
+    </head>
+</html>

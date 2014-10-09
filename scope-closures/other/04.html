@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function declareConjunctions(){
+                var conjunctions = ['before', 'after', 'below', 'above', 'inside', 'outside'];
+                for(var i=0; i<conjunctions.length; i++){
+                    (function(){
+                        
+                        var _conjunction = conjunctions[i];
+                        String.prototype[conjunctions[i]] = function (that){  
+                            return this + ' ' + _conjunction + ' ' + that;
+                        }
+                    })();
+                }
+            }
+            declareConjunctions();
+            
+            console.log("miles davis".before("wynton marsalis")); //miles davis before wynton marsalis 
+            console.log("head".inside("hat")); //head inside hat 
+        </script>
+    </head>
+</html>
