@@ -1,0 +1,57 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //Demo the problem
+            
+            var funcs = [];
+            for(var i=0;i<3;i++){
+                console.log(i + ' inside loop'); //0,1,2 inside loop
+                funcs[i] = function(){
+                    console.log(i + ' inside anonymous func'); //variable i within anonymous function is bount to the same var outside of the function.
+                    //this ananymous function does not have its own copy of i
+                }
+            }
+            console.log(i  + '  ouside of loop'); //3  //this is the final value of i after loop is done looping.
+            //And this is the value that anonymous function will use when it is called below
+            //because when we execute console.log(i + ' inside anonymous func') i is already 3
+            
+            for(var x=0;x<3;x++){
+                funcs[x]();  //prints 3 three times instead of expected 0,1,2
+            }
+            
+            //Fix the problem by immediately invoked function expression
+            
+            for(var j=0;j<3;j++){
+                (function(index){
+                    console.log(index); //0,1,2
+                })(j)
+            }
+            
+            //Another variation of immediately invoked function expression which assigns the variable value inside the function rather than passing it as a param
+            
+            for(var k=0;k<3;k++){
+                (function (){
+                    var index = k;
+                    console.log(index);
+                })();
+            }
+            
+            //Another way to fix is to wrap function creation in another function we insure that the value of k remains as intended.
+            //Anonymous function is using its own var l
+            //Note that instead of 'l' we could use 'index' in createFunc(index)
+            
+            function createFunc(l){
+                return function(){console.log(l + ' inside anonymous func');}
+            }
+            
+            for (var l=0;l<3;l++) {
+                funcs[l] = createFunc(l);
+            }
+            for(var x=0;x<3;x++){
+                funcs[x]();  //0,1,2
+            }
+            
+            //Does the anonymous func use its own var or it bound to the one outside? If it is using the one outside the outcome is not what we expect.
+        </script>
+    </head>
+</html>
