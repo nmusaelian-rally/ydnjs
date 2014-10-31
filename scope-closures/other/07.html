@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var x = 42;
+            function foo(){
+                console.log(this.x);
+            }
+            foo(); //42
+            
+            function Bar(){
+                this.y = 21;
+                this.print = function(){
+                    console.log(this.x); 
+                    console.log(this.y); 
+                }
+            }
+            
+            var bar = new Bar();
+            bar.print(); //undefined, 21
+            //var foo2 = new foo();
+            //foo2(); //Uncaught TypeError: object is not a function 
+        </script>
+    </head>
+</html>
