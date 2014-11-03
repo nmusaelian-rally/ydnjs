@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function buildList(list){
+                var fArr = []
+                for (var i=0;i<list.length;i++){
+                    var item = 'item ' + list[i];
+                    fArr.push(function(){console.log(item + ': ' + list[i])})
+                }
+                return fArr;
+            }
+            
+            function testList(){
+                var funcArray = buildList([1,2,3]);
+                for (var i=0;i<funcArray.length;i++){
+                    funcArray[i](); //item 3: undefined  (prints 3 times)
+                }
+            }
+            
+            testList(); //prints item3: undefined three times
+            /*
+             There is only one closure for the local variables for buildList.
+             When the anonymous functions are called on the line funcArray[i]();
+             they all use the same single closure, and they use the current value for i and item within that one closure
+             (where i has a value of 3 because the loop had completed, and item has a value of 'item3').
+             
+             see 11-fixed.html for how to fix it using immediately invoked function expression
+             **/
+        </script>
+    </head>
+</html>

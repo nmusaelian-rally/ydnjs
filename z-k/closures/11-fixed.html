@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function buildList(list){
+                var fArr = []
+                for (var i=0;i<list.length;i++){
+                    (function(){
+                        var j = i;
+                        var item = 'item ' + list[j];
+                        fArr.push(function(){console.log(item + ': ' + list[j])})
+                    })();
+                    
+                }
+                return fArr;
+            }
+            
+            function testList(){
+                var funcArray = buildList([1,2,3]);
+                for (var i=0;i<funcArray.length;i++){
+                    funcArray[i](); //item 1: 1, item 2: 2, item3: 3
+                }
+            }
+            
+            testList();
+        </script>
+    </head>
+</html>
