@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var cat = {
+                meow: function(){
+                    console.log('meow');
+                },
+                meowMore: function(num){
+                    for(var i=0;i<num;i++){
+                        this.meow();
+                    }
+                }
+            }
+            cat.meowMore(2);
+        </script>
+    </head>
+</html>
