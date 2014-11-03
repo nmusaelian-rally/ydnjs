@@ -7,7 +7,8 @@
             for(var i=0;i<3;i++){
                 console.log(i + ' inside loop'); //0,1,2 inside loop
                 funcs[i] = function(){
-                    console.log(i + ' inside anonymous func'); //variable i within anonymous function is bount to the same var outside of the function.
+                    console.log(i + ' inside anonymous func');
+                    //variable i within anonymous function is bound to the same var outside of the function.
                     //this ananymous function does not have its own copy of i
                 }
             }
@@ -27,7 +28,8 @@
                 })(j)
             }
             
-            //Another variation of immediately invoked function expression which assigns the variable value inside the function rather than passing it as a param
+            //Another variation of immediately invoked function expression which assigns
+            //the var value inside the function rather than passing it as a param
             
             for(var k=0;k<3;k++){
                 (function (){
@@ -36,7 +38,8 @@
                 })();
             }
             
-            //Another way to fix is to wrap function creation in another function we insure that the value of k remains as intended.
+            //Another way to fix is to wrap function creation in another function
+            //to insure that the value of k remains as intended.
             //Anonymous function is using its own var l
             //Note that instead of 'l' we could use 'index' in createFunc(index)
             
@@ -51,7 +54,7 @@
                 funcs[x]();  //0,1,2
             }
             
-            //Does the anonymous func use its own var or it bound to the one outside? If it is using the one outside the outcome is not what we expect.
+            //Does the anonymous func use its own var or it's bound to the one outside? If it is using the one outside the outcome is not what we expect.
         </script>
     </head>
 </html>
