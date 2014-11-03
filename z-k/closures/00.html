@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //var c = 101;
+            function outer(a){
+                var b = a*2;
+                function inner(){
+                    var c = b/2;
+                }
+                return c; //Uncaught ReferenceError: c is not defined unless c is defined in the scope that ecloses outer()
+            }
+            
+            console.log(outer(21));
+            //inner has access to vars defined in the scope of outer.
+            //outer does not have access to vars defined in the scope of inner.
+        </script>
+    </head>
+</html>

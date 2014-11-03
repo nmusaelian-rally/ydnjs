@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+           function sum(numbers){
+                var count = 0;
+                function addNumbers(num){ //addNumber is a closure. It captures a var declared in the enclosing scope
+                    count += num;
+                }
+                
+                numbers.forEach(addNumbers);//addNumbers(1),count = 1;addNumbers(2),count = 3;addNumbers(42),count = 45
+                
+                return count;
+           }
+           
+           console.log(sum([1,2,42])); //45
+        </script>
+    </head>
+</html>

@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function count(){
+                var i = 0;
+                return ++i;
+            }
+            console.log(count()); //1
+            console.log(count()); //1
+            console.log(count()); //1
+            
+            //-----------------------------------
+            
+            function countAndKeepPrivateState(){
+                var i = 0;
+                console.log('try private i', i);
+                return function(){
+                    console.log('i inside closure:',i); //0,1,2
+                    return ++i;
+                }
+            }
+            //console.log('i:',i); //Uncaught ReferenceError: i is not defined (because it is only availabe in funciton scope )
+            var countAgain = countAndKeepPrivateState(); //called only once; the returned function is saved in countAgain
+            console.log(countAgain()); //1 enclosed function already returned but countAgain has access to i
+            console.log(countAgain()); //2
+            console.log(countAgain()); //3
+            
+            /*
+             *The returned function closes over i. It also increments it.
+             *When we call it repeatedly with no argument it still gives different results,
+             *because it references private mutable i.
+             */
+        </script>
+    </head>
+</html>

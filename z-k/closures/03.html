@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script src="http://documentcloud.github.com/underscore/underscore-min.js"></script>
+        <script type="text/javascript">
+            function sayHi(name){
+                _.times(3,function(){
+                    console.log("Hi, my name is " + name);   //anonymous function uses var from the enclosing scope
+                })
+            }
+            sayHi("Wallace");
+            
+        </script>
+    </head>
+</html>
