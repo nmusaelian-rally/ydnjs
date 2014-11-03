@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //local variables are not copied — they are kept by reference.
+            //It is like keeping a stack-frame in memory after the outer function exits!
+            function say42(){
+                var x = 41;
+                var y = 41;
+                var answerToEverything = function(){
+                    console.log('x', x);
+                    console.log('y', y);
+                    x++; //x incremented inside the closure
+                }
+                y++; //y incremented outside the closure
+                return answerToEverything;
+            }
+            
+            var foo = say42();
+            //call foo three times
+            for(var i=1;i<=3;i++){
+                console.log('loop...', i);
+                foo();
+            }
+        </script>
+    </head>
+</html>
+
+<!--
+
+loop... 1 
+x 41 
+y 42
+
+loop... 2 
+x 42 
+y 42 
+
+loop... 3 
+x 43 
+y 42
+
+-->
