@@ -1,0 +1,61 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            // from prev example, in foo.apply, 'this' can point back to foo itself:invoking foo on foo!
+            //foo.apply(foo,["apple","orange"]);
+            
+            var Module = (function ModuleManager(){
+                var modules = {};
+                
+                function define(name, dependenciesArr, fn){
+                    for (var i=0; i<dependenciesArr.length; i++) {
+                        //each dependency stores a module, identified by module[name]
+                        dependenciesArr[i] = modules[dependenciesArr[i]]; 
+                    }
+                    //a specific module identified by name modules[name]
+                    //stores the return value of fn.applied on itself, with dependenciesArr arguments
+                    //stores the return value, the module's API, into an internal list of modules tracked by name.
+                    modules[name] = fn.apply(fn,dependenciesArr); 
+                }
+                
+                function get(name){
+                    return modules[name];
+                }
+                
+                return {
+                    define: define,
+                    get:get
+                }
+            })();
+            
+            //create a module named 'bar' with no dependencies
+            Module.define("bar",[],function(){
+                function hello(who) {
+                    return "Let me introduce: " + who;
+                }
+                
+                return {
+                    hello:hello
+                }
+            })
+            
+            var b = Module.get("bar");
+            console.log(b.hello("hippo"));
+            
+            //create a module named 'foo' with dependency on 'bar'
+            Module.define("foo",["bar"],function(bar){
+                var hungry = "big hippo";
+                function makeItBig(){
+                    return (bar.hello(hungry).toUpperCase());
+                }
+                return {
+                    makeItBig:makeItBig
+                }
+            })
+            
+            var f = Module.get("foo");
+            console.log(f.makeItBig());
+        </script>
+    </head>
+</html>
