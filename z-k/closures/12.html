@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /* There is not a single closure per function declaration. There is a closure for each call to a function. */
+            function createClosure(someNum, someObjRef){
+                // Local variables that end up in closure
+                var num = someNum;
+                var arr = [1,2,3];
+                var ref = someObjRef;
+                return function(x){
+                    num = num + x;
+                    arr.push(num);
+                    console.log('num: ' + num + '\narr: ' + arr.toString() + '\nref.a: ' + ref.a);
+                }
+            }
+            var obj = {a:42}
+            var foo = createClosure(42, obj);
+            foo(1);
+            var bar = createClosure(21, obj);
+            bar(1);
+        </script>
+    </head>
+</html>
+
+<!--
+
+num: 43
+arr: 1,2,3,43
+ref.a: 42
+
+num: 22
+arr: 1,2,3,22
+ref.a: 42
+
+-->
