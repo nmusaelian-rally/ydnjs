@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function yell(name){
+                var allCaps = name.toUpperCase();
+                var scream = function(){ //closure closes over var in the containing scope, allCaps              
+                    console.log(allCaps + '!!!'); 
+                }
+                return scream;
+            }
+            
+            var wallaceSpeak = yell('gromit'); //yell exists but wallaceSpeak still has access to its var allCaps
+            wallaceSpeak(); //GROMIT!!!
+            
+            // inner functions have access to any of the containing functions local variables.
+            /* To understand what closure is you first need to understand stack-frames.
+            A stack frame is a thing that you push on the stack. They are data structures that contain information about functions to call.
+            In the case of a call stack, a stack frame represents a function call and its argument data.
+            Each stack frame corresponds to a call to a function.
+            
+            In js functions still create stack-frames however, inner functions have access to any of the containing functions local variables.
+            So a closure is a stack-frame that doesn’t go away after the outer function is complete.
+            In the above Javascript sream() is an inner function of yell().
+            When wallaceSpeak() is called, it still had access to allCaps var of its containing function.
+            A closure in js is created each time you put a function inside another function. 
+             */
+            
+        </script>
+    </head>
+</html>

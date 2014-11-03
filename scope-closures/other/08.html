@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *you cannot fill a beer back up, and that by using closures you can create private vars & funcs
+             *that cannot be accessed from outside the object.
+             */
+            function Beer(type){
+                this.type = type;
+                var volume = 0.5;
+                
+                var finish = function(){
+                    volume = volume - 0.5;
+                };
+                
+                this.drink = function(){
+                    if (volume === 0) {
+                        console.log('no more beer.');
+                        return;
+                    }
+                    finish();
+                    console.log('mmm beer.');
+                };
+            }
+            
+            var stout = new Beer('stout');
+            
+            stout.drink(); //mmm beer. 
+            stout.drink(); //no more beer.
+            //stout.finish(); //Uncaught TypeError: undefined is not a function
+            //finish(); //Uncaught ReferenceError: finish is not defined 
+        </script>
+    </head>
+</html>
