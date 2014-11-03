@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function makeGlobals(){
+                var x = 41;
+                this._increment = function(){
+                    console.log(++x);
+                }
+                this._timesTwo = function(){
+                    x = x*2;
+                    console.log(x);
+                }
+            }
+            makeGlobals();
+            //global functions share the same local var x
+            _increment(); //42
+            _timesTwo(); //84
+            _increment(); //85
+            
+            //create another frame stack by calling makeGlobals() again:
+            makeGlobals();
+            _increment(); //42
+        </script>
+    </head>
+</html>
