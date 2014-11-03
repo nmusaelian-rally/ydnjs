@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             *Whenever you see the function keyword within another function,
+             *the inner function has access to variables in the outer function.
+             *That is a closure.
+             *
+             *A function doesn't have to return in order to be called a closure.
+             *Simply accessing variables outside of your immediate lexical scope creates a closure.
+             *
+             *In 06.html function did not return. Inner bar was called from inside outer foo.
+             *
+             *In this 07.html the code is slightly changed, but it does the same thing.
+             *Instead of named function bar that is called explicilty from inside foo,
+             *foo now returns anonymous function
+             *
+             *Here bar() can still refer to x and tmp, even though it is no longer directly inside the scope.
+             *(the outer foo has exited)
+             *
+             *Also, since tmp is still hanging around inside bar's closure,
+             *it is being incremented. It will be incremented each time you call bar.
+             */
+            function foo(x) {
+                var temp = 3;
+                return function(y){
+                    console.log(x + y + (++temp)); 
+                }
+            } 
+            
+            var bar = foo(2); //bar is a closure
+            bar(10); //16
+            bar(10); //17
+            
+        </script>
+    </head>
+</html>
