@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //same as 04.html
+            function countAndKeepPrivateState(){
+                var i = 0;
+                console.log('i in outer function', i); //0
+                return function(){
+                    console.log('i inside closure:',i); //0,1,2
+                    return ++i;
+                }
+            }
+            var countAgain = countAndKeepPrivateState(); 
+            for(var index=0; index<3; index++){
+                console.log('countAgain()', countAgain()); //1,2,3
+            }
+        </script>
+    </head>
+</html>
