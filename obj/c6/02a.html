@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var taskA = {
+                setTask: function(id){
+                    this.id = id
+                },
+                printTask: function(){
+                    console.log(this.id)
+                }
+            };
+            
+            taskA.setTask(1);
+            taskA.printTask();
+            
+            var taskB = Object.create(taskA);
+            
+            taskB.prepareTask = function(id,tag){
+                this.setTask(id);
+                this.tag = tag;
+            }
+            taskB.printTaskDetails = function(){
+                this.printTask();
+                console.log(this.tag);
+            }
+            
+            taskB.prepareTask(2,"easy");
+            taskB.printTaskDetails();
+        </script>
+    </head>
+</html>

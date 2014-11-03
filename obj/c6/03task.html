@@ -2,9 +2,9 @@
     <head>
         <script type="text/javascript">
             var drawing = {
-                draw: function(thinking){
-                    this.thinking = thinking;
-                    console.log(this.thinking);
+                draw:function(think){
+                    this.think = think;
+                    console.log(this.think);
                 }
             };
             
@@ -12,15 +12,13 @@
             
             var painting = Object.create(drawing);
             
-            //no property name shadowing!
-            painting.paint = function(thinking1, thinking2){
-                this.draw(thinking1); //painting delegates to drawing
-                this.thinking2 = thinking2;
-                console.log(thinking2);
+            painting.paint = function(think1, think2){
+                this.draw(think1); //delegated draw to drawing. Did not define its own 'draw', and no property shadowing
+                this.think2 = think2;
+                console.log(this.think2);
             }
             
-            painting.paint("volume", "open form");
-            
+            painting.paint("value", "open form");
         </script>
     </head>
 </html>
