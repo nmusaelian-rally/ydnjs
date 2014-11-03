@@ -5,6 +5,7 @@
                 var count = 0;
                 function addNumbers(num){ //addNumber is a closure. It captures a var declared in the enclosing scope
                     count += num;
+                    console.log(count);
                 }
                 
                 numbers.forEach(addNumbers);//addNumbers(1),count = 1;addNumbers(2),count = 3;addNumbers(42),count = 45

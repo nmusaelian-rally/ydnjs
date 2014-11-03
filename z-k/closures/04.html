@@ -13,7 +13,7 @@
             
             function countAndKeepPrivateState(){
                 var i = 0;
-                console.log('try private i', i);
+                console.log('i in outer function', i);
                 return function(){
                     console.log('i inside closure:',i); //0,1,2
                     return ++i;
@@ -21,14 +21,16 @@
             }
             //console.log('i:',i); //Uncaught ReferenceError: i is not defined (because it is only availabe in funciton scope )
             var countAgain = countAndKeepPrivateState(); //called only once; the returned function is saved in countAgain
-            console.log(countAgain()); //1 enclosed function already returned but countAgain has access to i
-            console.log(countAgain()); //2
-            console.log(countAgain()); //3
+            console.log('countAgain()', countAgain()); //1 enclosed function already returned but countAgain has access to i
+            console.log('countAgain()', countAgain()); //2
+            console.log('countAgain()', countAgain()); //3
             
             /*
              *The returned function closes over i. It also increments it.
              *When we call it repeatedly with no argument it still gives different results,
              *because it references private mutable i.
+             *A closure not only has access to a var declared in the outer function after the outer function exits,
+             *a closer also updates the value stored in that variable
              */
         </script>
     </head>
