@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var wallace = {
+                name: 'Wallace'
+            };
+            
+            var gromit = {
+                name: "Gromit"
+            };
+            
+            function greet(msg){
+                console.log(msg + ' ' + this.name)
+            }
+            
+            greet.apply(wallace, ['hello']); //without [] error: Uncaught TypeError: Function.prototype.apply: Arguments list has wrong type 
+            greet.apply(gromit, ['hi']);
+            
+            greet.call(wallace, 'barev');
+        </script>
+    </head>
+</html>
