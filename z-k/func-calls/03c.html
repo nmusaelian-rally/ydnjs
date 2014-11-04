@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //this example is not about dog borrowing speak() from man
+            Function.prototype._bind = function (context){
+                var fn = this;
+                return function(){ //capture 'this' which is the function to bind in a var fn; capture also 'context' in the same closure
+                    return fn.apply(context,arguments) 
+                }
+            }
+            
+            var dog = {
+                name: 'Gromit'
+            };
+            var man = {
+                name: 'Wallace',
+                speak: function(msg){
+                    console.log(msg + ', ' + this.name); //bind 'this' to dog, so that 'this.name' resolves to 'Gromit'
+                }._bind(dog)
+            };
+            
+            man.speak('Not a cracking toast');
+        </script>
+    </head>
+</html>
