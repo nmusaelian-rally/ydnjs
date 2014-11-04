@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Foo(x){
+                this.x = x;
+            }
+            var foo = new Foo(42);
+            console.log('foo.x', foo.x);
+            
+            var bar = {
+                get x(){
+                    return x //ok
+                    //return this.x //Uncaught RangeError: Maximum call stack size exceeded
+                    //return this._x_  //ok
+                    //return this.__x //ok
+                },
+                set x(val){
+                    x = val; //ok
+                    //this._x_ = val; //ok
+                    //this.__x = val; //ok
+                }
+            }
+            
+            bar.x = 21;
+            console.log('bar.x', bar.x);
+            
+            //Uncaught RangeError: Maximum call stack size exceeded
+            //if this.x is used  in bar
+            //You cannot access a property in the getters or setters by the same name as a property you are defining using Object.defineProperty.
+            //You've created a recursive function call that never exits.
+            //the following variations will work:
+            //return x
+            //return this._x_
+            //return this.__x
+        </script> 
+    </head>
+</html>
