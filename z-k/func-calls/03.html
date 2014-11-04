@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var obj = {
+                a:2
+            }
+            
+            //var a = 'global a';
+            
+            function _bind(fn,obj){
+                return function(){
+                    return fn.apply(obj, arguments)
+                };
+            }
+            
+            function foo(something){
+                console.log(this.a, something);
+                return this.a + something;
+            }
+            
+            foo('not ok'); //undefined "not ok" //there is no global a
+            
+            var bar = _bind(foo, obj);
+            bar(); //2 undefined
+            bar('ok'); //2 ok
+            bar(3); //2 3
+            console.log(bar(3)); //5
+            
+        </script>
+    </head>
+</html>
