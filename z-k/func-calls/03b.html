@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var dog = {
+                name: 'Gromit'
+            };
+            
+            var man = {
+                name: 'Wallace',
+                speak: function(msg){
+                    console.log(msg);
+                }
+            };
+            
+            function _bind(fn, obj){
+                return function(){
+                    return fn.apply(obj, arguments)
+                }
+            }
+            
+            _bind(man.speak, dog)('Not a cracking toast, Wallace!')
+        </script>
+    </head>
+</html>
