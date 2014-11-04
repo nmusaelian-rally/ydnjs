@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //A callback is a function that is passed to another function to be called at a later time.
+            //Closures often used as callbacks.
+            //this example does not use closure because it is not closing over a var from a parent scope
+            
+            window.setTimeout(function(){
+                console.log("Remember to watch 'Sabrina'")
+            },1000);
+            
+            
+            //----------closure example
+            
+             function rememberToWatch(movie){
+                window.setTimeout(function(){
+                    console.log("Remember to watch " + movie)
+                },1000)
+            }
+            rememberToWatch("'Producers'");
+        </script>
+    </head>
+</html>
