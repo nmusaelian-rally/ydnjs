@@ -16,7 +16,11 @@
             greet.apply(wallace, ['hello']); //without [] error: Uncaught TypeError: Function.prototype.apply: Arguments list has wrong type 
             greet.apply(gromit, ['hi']);
             
-            greet.call(wallace, 'barev');
+            function greet2(msg1, msg2){
+                console.log(msg1 + ' ' + this.name);
+                console.log(msg2 + ' ' + this.name);
+            }
+            greet2.call(wallace, 'barev', 'ciao');
         </script>
     </head>
 </html>
