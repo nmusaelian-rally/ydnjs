@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var dog = {
+                name:'Gromit'
+            };
+            
+            var man = {
+                name: 'Wallace',
+                speak: function(msg){
+                    console.log(msg)
+                }
+            }
+            
+            man.speak('Not a cracking toast, Gromit!');
+            //dog.speak('Not a cracking toast, Gromit!'); //Uncaught TypeError: undefined is not a function
+            //defind _bind to let dog borrow speak()
+            
+           function _bind(fn, obj){
+                return function(){
+                    return fn.apply(obj, arguments)
+                }
+           }
+           
+           var gromit = _bind(man.speak, dog);
+           gromit('Not a cracking toast, Wallace!'); 
+        </script>
+    </head>
+</html>
