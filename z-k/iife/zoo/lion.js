@@ -6,8 +6,11 @@
         window.Zoo = {};
     }
     
-    var Lion = Zoo.Lion = function(){
-        
+    var Lion = Zoo.Lion = function(age){
+        Zoo.Animal.call(this,age);          //we call Animal.call, not new Animal() because inside Lion we don't want to construct a whole new Animal
+        //we just want to run the Animal initialization logic on the current Lion instance.
+        //That's why we call the Animal constructor while setting 'this' to the current Lion instance.
+        //This pattern is used when superclass has initialization code.
     };
     
     function Surrogate(){};

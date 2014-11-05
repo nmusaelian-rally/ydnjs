@@ -5,9 +5,12 @@
          <script type="text/javascript">
             (function(){
                 var pride = [];
+                var age =0;
                 for (var i=0;i<3;i++) {
+                    age++;
                     //console.log(new Zoo.Lion); //Zoo.Lion {roar: function}
-                    pride.push(new Zoo.Lion); //works because Lion is a property of Zoo, and Zoo is globally available via window.Zoo
+                    pride.push(new Zoo.Lion(age)); //works because Lion is a property of Zoo, and Zoo is globally available via window.Zoo
+                    console.log(pride[i].age); //undefined because Animal constructor is not called
                     pride[i].roar(); //roar!
                     pride[i].run(); //run
                 }

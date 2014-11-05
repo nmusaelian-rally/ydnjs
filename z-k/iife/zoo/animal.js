@@ -3,7 +3,8 @@
         window.Zoo = {}
     }
     
-    var Animal = Zoo.Animal = function(){
+    var Animal = Zoo.Animal = function(age){
+        this.age = age;
     }
     
     Animal.prototype.run = function(){
