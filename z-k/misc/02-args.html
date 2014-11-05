@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //'arguments' like 'this' is reset on every function invokation, and will not work inside an anonymous function below:
+            function foo() {
+                for (var i=0; i< arguments.length; i++){
+                    console.log('arguments outside of closure:', arguments[i]); //apples, oranges
+                    var args = Array.prototype.slice.call(arguments); //to use later, inside closure
+                    document.body.appendChild(document.createElement('br')); //each link will be on a new line
+                    var anchor = document.createElement('A');
+                    anchor.setAttribute('href','#');
+                    anchor.appendChild(document.createTextNode(arguments[i])); //args[1] will also work
+                    document.body.appendChild(anchor);
+                    (function(){
+                        var j = i;
+                        console.log('arguments inside closure:', arguments[j]); //undefined, undefined
+                        console.log('args inside closure:', args[j]); //apples, oranges
+                        anchor.addEventListener('click', function(event){
+                            console.log('j', j); 
+                            event.preventDefault();
+                        },false);
+                    })();
+                }  
+            }
+             window.onload = function(){ //have to call foo after window.onload, otherwise document.body.appendChild won't work
+                foo('apples','oranges');
+             }
+            
+        </script>
+    </head>
+</html>
