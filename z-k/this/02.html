@@ -8,8 +8,11 @@
             console.log(calc.sum);
             
             Calculator.prototype.addNumbers = function(numbers){
+                var that = this;
                 numbers.forEach(function(number){
-                    calc.sum += number; //this.sum will not work
+                    //this.sum += number; //will not work
+                    //calc.sum += number; //will work
+                    that.sum += number;
                 })
                 return calc.sum;
             }
