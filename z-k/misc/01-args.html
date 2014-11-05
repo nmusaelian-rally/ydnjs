@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //access values of all arguments via 'arguments' keyword. Like 'this', 'arguments' is set each time a function is called
+            //'arguments' is not a true Array, but it can be indexed with integers and has a 'length' property
+            //but we can use Array#slice to create a copy of 'arguments'
+            function printArgs() {
+                for (var i=0; i< arguments.length; i++){
+                    console.log(arguments[i]); //foo,bar,baz
+                }
+                //arguments.push('random'); //Uncaught TypeError: undefined is not a function
+                //since 'arguments' is not really an Array, and only an Array-like. There is no push method.
+                var args = Array.prototype.slice.call(arguments);
+                //now we can use push and forEach Array methods
+                args.push('random');
+                args.forEach(function(a){console.log(a)})//foo,bar,baz,random
+                
+            }
+            printArgs('foo','bar','baz');
+        </script>
+    </head>
+</html>
