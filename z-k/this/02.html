@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Calculator(){
+                this.sum = 0; //'this' points to outer, global scope until var calc = new Calculator()
+            }
+            var calc = new Calculator();
+            console.log(calc.sum);
+            
+            Calculator.prototype.addNumbers = function(numbers){
+                numbers.forEach(function(number){
+                    calc.sum += number; //this.sum will not work
+                })
+                return calc.sum;
+            }
+            
+            calc.addNumbers([1,2,3]);
+            console.log(calc.sum);
+        </script>
+    </head>
+</html>
