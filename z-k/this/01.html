@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore-min.js"></script>
+        <script type="text/javascript">
+            var tree = {
+                height: 10,
+                grow: function(){
+                    this.height++;
+                }
+            }
+            
+            tree.grow();
+            console.log(tree.height);//11
+            
+            //when using inside a loop, tree.grow() is passed by ref and 'this' does not point to 'tree'
+            //_.times(3, tree.grow());//Uncaught TypeError: undefined is not a function
+            
+            _.times(3, function(){
+                tree.grow();
+            });
+            //used a closure to capture tree
+            console.log(tree.height);//14
+            
+            //another way to do it is to use bind:
+            _.times(3, tree.grow.bind(tree));
+            console.log(tree.height);//17
+            
+        </script>
+    </head>
+</html>
