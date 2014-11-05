@@ -4,6 +4,9 @@
     }
     
     var Animal = Zoo.Animal = function(){
-        
+    }
+    
+    Animal.prototype.run = function(){
+        console.log('fast')
     }
 })();

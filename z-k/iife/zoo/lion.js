@@ -13,8 +13,16 @@
     function Surrogate(){};
     //Surrogate.prototype = Animal.prototype; //will cause Uncaught ReferenceError: Animal is not defined 
     Surrogate.prototype = Zoo.Animal.prototype;
-    Lion.prototype = new Surrogate();
+    Lion.prototype = new Surrogate(); //set Lion prototype to Surrogatge instance
     Lion.prototype.roar = function(){
         console.log('roar!')
     }
 })();
+
+/*
+ Lion.prototype.__proto__ must be Animal.prototype, so we can call Animal methods on a Lion
+Constructing Lion.prototype must not involve calling the Animal constructor function
+This is done via a third class usually called Surrogate.
+The reason why we don't just call Lion.prototype=Animal.prototype is because we dont want that any function added to Lion to be added to Animal,
+e.g. roar() should exist on Lion only.
+ */
