@@ -1,0 +1,50 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //old surrogate trick continues
+            //in this version we avoid potential problems:
+            /*
+             1) avoid creating a new Animal when linking Dog.prototype to Animal.prototype
+             there will be no
+             Dog.prototype = new Animal();
+             instead we will use surrogate
+             
+             2) constructor of "Super class" Animal will be called when creating a Dog
+             
+             3) adding properties on Dog.prototype does not add them to Animal.prototype
+            */
+            
+            function Animal(name){
+                this.name = name; 
+            };
+            
+            Animal.prototype.sayHi = function(){
+                console.log('Hi, my name is ' + this.name);
+            }
+            
+            function Surrogate(){};
+            Surrogate.prototype = Animal.prototype;
+            
+            function Dog(name,leash){
+                Animal.call(this, name); //super class is called
+                this.leash = leash;
+                
+            }; 
+            Dog.prototype = new Surrogate(); //no Animal is created
+            Dog.prototype.bark = function(){
+                console.log('bark');
+            }
+            
+            var fido = new Dog('Fido', 'long');
+            console.log(fido);
+            fido.bark();//bark
+            fido.sayHi();//Hi, my name is Fido
+            
+            var a = new Animal('loch ness monster');
+            a.bark();//good!All animals don't bark. Uncaught TypeError: undefined is not a function
+            
+            //see 05.html how to solve this without surrogate using
+            //Dog.prototype = Object.create(Animal.prototype);
+        </script>
+    </head>
+</html>
