@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(url, callback) {
+                /*
+                 create XMLHttpRequest object.
+                 It provides an easy way to retrieve data from a URL without having to do a full page refresh.
+                 It's used in AJAX. It makes the application faster and more responsive to user actions.
+                 */
+                var httpRequest; 
+                if (window.XMLHttpRequest) {
+                    httpRequest = new XMLHttpRequest();
+                } else if (window.ActiveXObject) {
+                    httpRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+
+                //onreadystatechange:
+                //A JavaScript function object that is called whenever the readyState attribute changes.
+                
+                httpRequest.onreadystatechange = function() {
+                    // inline function to check the status of our request
+                    // this is called on every state change
+                    //4 is DONE
+                    //it says: ignore state changes until the state is 4 and the status is 200
+                    //In the real world you’d want to check if the request failed,
+                    //but we’re assuming the file exists and can be loaded by the browser. 
+                    if (httpRequest.readyState === 4 && httpRequest.status === 200) {
+			//callback.call(httpRequest.responseXML);
+                        callback.call(JSON.parse(httpRequest.response));
+                    }
+                };
+                httpRequest.open('GET', url);
+                httpRequest.send();
+            }
+
+            foo("text.json", function() {
+                console.log(this); //Object {a: "apples", b: "oranges"}
+                console.log(this.a); //apples
+            });
+            console.log("this will run before the callback");
+        </script>
+    </head>
+</html>

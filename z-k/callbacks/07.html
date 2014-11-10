@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function foo(url, callback){
+                
+                var myRequest;
+                
+                if (window.XMLHttpRequest) {
+                    myRequest = new XMLHttpRequest();
+                }
+                else if (window.ActiveXObject) {
+                    myRequest = new ActiveXObject("Microsoft.XMLHTTP");
+                }
+                
+                myRequest.onreadystatechange = function(){
+                    if (myRequest.readyState === 4 && myRequest.status === 200) {
+                        callback.call(JSON.parse(myRequest.responseText));
+                    }
+                };
+                myRequest.open('GET',url);
+                myRequest.send();
+            }
+        </script>
+    </head>
+    <body>
+        <div id="a">onion</div>
+        <div id="b">garlic</div>
+        <button type="button" onclick="foo('text.json', function(){
+                document.getElementById('a').innerHTML = this.a;
+                document.getElementById('b').innerHTML = this.b;
+            })">Update</button>
+    </body>
+</html>
