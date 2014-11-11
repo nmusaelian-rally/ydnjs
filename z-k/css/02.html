@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+realative means relative to itself. E.g. 
+
+position:relative;
+top:10px;
+
+will cause an element to move 10px down from where it would normally appear.
+Also, the space it would take then would still be taken.
+Relative does NOT mean relative to the parent containter.
+
+If you don't specify top, bottom, left, right properties, positoin:relative will do nothing.
+
+see 02.png
+-->
+<style type="text/css"> 
+  strong{
+    position:relative;
+    background:yellow;
+    top:30px;
+  }
+</style>
+</head>
+<body>        
+    Some text goes here;Some <strong>text</strong>text goes here;Some text goes here;Some text goes here<br>
+    Some text goes here;Some text goes here;Some text goes here;Some text goes here<br>
+    Some text goes here;Some text goes here;Some text goes here;Some text goes here<br>
+    Some text goes here;Some text goes here;Some text goes here;Some text goes here
+</body>
+</html>

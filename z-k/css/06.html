@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+if a parent element contains only floated elements (children), it has zero height.
+To fix, we added :after pseudo-selector in 05.html
+Here we use overflow: hidden to the parent of the floated element
+
+see 00.png from http://css-tricks.com/all-about-floats/ for float&clear illustration
+
+see 05.png
+-->
+<style type="text/css"> 
+    section{
+        background:red; /*will not be visible because section contains only a floated element unless clear fix is applied or overflow: hidden is used*/
+        overflow: hidden /*Be careful not to hide content or trigger unwanted scrollbars.*/
+    }
+    nav{
+        float: left;
+        backg
+</style>
+</head>
+<body>        
+    <section>
+        <nav>
+            Nav bar
+        </nav>
+    </section>
+</body>
+</html>

@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+if a parent element contains only floated elements (children), it has zero height.
+To fix, add :after pseudo-selector to insert an empty string inside <section> with
+'clear' property that tells which side(s) of an element other floating elements are not allowed.
+In this case, both.
+The clear property applies to both floating and non-floating elements.
+It specifies whether an element can be next to floating elements that precede it, or must be moved down (cleard) below them.
+
+see 05.png
+-->
+<style type="text/css"> 
+    section{
+        background:red; /*will not be visible because section contains only a floated element unless clear fix is applied*/
+    }
+    section::after{ /* insert content after every <section> Notice double colon */
+        content: ""; /*empty string forces section to have height and show its background color red*/
+        clear: both;
+        display: table; /*for IE*/
+    }
+    nav{
+        float: left;
+        background:yellow;
+    }
+</style>
+</head>
+<body>        
+    <section>
+        <nav>
+            Nav bar
+        </nav>
+    </section>
+</body>
+</html>

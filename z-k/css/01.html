@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+top,bottom,left,right properties of absolutely positioned element are positioned relative to their first non-statically positioned parent container.
+The absolutely positioned 'article' is 10px down and 200px righ of the relatively positioned parent 'selection'.
+Also, 'div' and 'h2' are under the absolutely positioned 'article' as it 'article' is "above" the page.
+see 01.png 
+-->
+<style type="text/css"> 
+    section{
+        margin:0px auto;
+        width: 300px;
+        background: blue;
+        position:relative;
+    }
+    
+    article{
+        background:yellow;
+        position:absolute;
+        top:10px;
+        left:200px;
+    }
+    h1{
+        background:red;
+    }
+    .somediv{
+        background:gray;
+    }
+</style>
+</head>
+<body>        
+    <h1>Outside</h1>
+    <section>
+        <h2>Heading 2</h2>
+        <article>
+            Some article goes here;Some article goes here;Some article goes here;Some article goes here<br>
+            Some article goes here;Some article goes here;Some article goes here;Some article goes here
+        </article>
+        <div class="somediv">
+            Some div goes here;Some div goes here;Some div goes here;Some div goes here;Some div goes here<br>
+            Some div goes here;Some div goes here;Some div goes here;Some div goes here;Some div goes here
+        </div>
+    </section>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+if a parent element contains only floated elements (children), it has zero height.
+see 04.png
+-->
+<style type="text/css"> 
+    section{
+        background:red; /*will not be visible because section contains only a floated element*/
+    }
+    nav{
+        float:left;
+        background:yellow;
+    }
+</style>
+</head>
+<body>        
+    <section>
+        <nav>
+            Navbar
+        </nav>
+    </section>
+</body>
+</html>
