@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            /*
+             before we talk about callbacks:
+             functions in js are objects created a Function constructor.
+             a Function obj contains a string of the function's code
+             */
+            
+            var multiply = new Function('x', 'y', 'return x*y');
+            
+            var z = multiply(2,3);
+            console.log(z);
+            
+            //function as object thing allows passing function's code as arguments
+            //to another function
+        </script>
+    </head>
+</html>

@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Animal(name){
+                this.name = name;
+            }
+            Animal.prototype.sayHi = function(){
+                console.log('Hi, my name is ' + this.name);
+            };
+            
+            function Dog(name, leash){
+                Animal.call(this, name);
+                this.leash = leash;
+            }
+            
+            //Object.create(arg) returns a new obj with its __proto__ set to arg
+            Dog.prototype = Object.create(Animal.prototype); 
+            Dog.prototype.bark = function(){
+                console.log('bark');
+            }
+            
+            var fido = new Dog('Fido', 'long');
+            console.log(fido);
+            fido.sayHi();
+            fido.bark();
+            
+        </script>
+    </head>
+</html>

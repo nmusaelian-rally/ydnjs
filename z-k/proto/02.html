@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Animal(name){
+                this.name = name;
+            }
+            Animal.prototype.sayHi = function(){
+                console.log('Hi, my name is ' + this.name);
+                
+            }
+            
+            function Dog(){}
+                //doesn't Animal need a name?
+            Dog.prototype = new Animal();
+            Dog.prototype.bark = function(){
+                console.log('bark');
+            }
+            
+            var myDog = new Dog('Fido');
+            //we are not even calling Animal constructor when creating a Dog, why bother with 'name'?
+            //constructing new Animal for Dog's prototpye does not count because a Dog was created
+            //prior to that without the superclass' construtor being called
+            console.log(myDog)
+            myDog.sayHi(); //Hi, my name is undefined
+            
+            //our goals are:
+            //Dog.prototype.__proto__ must be Animal.prototype so that methods defined on Animal exist on Dog
+            //new Animal instance should not be created when setting Dog's prototype.
+            //see 03.html
+        </script>
+    </head>
+</html>

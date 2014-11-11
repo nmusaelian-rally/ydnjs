@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Anima1(){};
+            function D0g(){};
+            function P00dl3(){};
+            
+            var myAnima1 = new Anima1(); //myAnimal's __proto__ points Animal.prototype
+            var myD0g = new D0g();       //myDog's __proto__ points Dog.prototype
+            var myP00dl3 = new P00dl3(); //myPoodle's __proto__ points Poodle.prototype
+            
+            //but we want myPoodle's __proto__ to point to Dog.prototype
+            //and we want myDog's __proto__ to point to Animal.prototype
+            //we want:
+            
+            //Poodle.prototype.__proto__ = Dog.prototype
+            //Dog.prototype.__proto__ = Animal.prototype
+            
+            //you can't set __proto__
+            //the only way go get to it is via constructior using 'new'
+            
+            //here is how:
+            
+            function Animal(){};
+            function Dog(){};
+            function Poodle(){};
+            
+            Dog.prototype = new Animal();
+            Poodle.prototype = new Dog();
+            
+            var myAnimal = new Animal();
+            var myDog = new Dog();
+            var myPoodle = new Poodle();
+            
+            //now, due to recursive search in prototype chain a method defined for Animal will be avaialbe in Dog
+            //there is one problem though:
+            //setting Dog's prototype to Animal requires creation of a new Animal.
+            //See 02.html for illustration   
+        </script>
+    </head>
+</html>

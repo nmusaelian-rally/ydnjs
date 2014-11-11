@@ -1,0 +1,74 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //old surrogage trick
+            function Animal(name){
+                this.name = name;
+            }
+            Animal.prototype.sayHi = function(){
+                console.log('Hi, my name is ' + this.name);
+            };
+            
+            function Dog(){};
+            
+            //surrogate will be used to construct Dog's prototype
+            
+            function Surrogate(){};
+            
+            Surrogate.prototype = Animal.prototype;
+            //we can't I say: Dog.prototype = new Animal.prototype()
+            //it errors: object is not a function
+            //on a side note:
+            //Surrogate.prototype = Animal.prototype
+            //does not create a new object for Surrogate.prototype to be linked to
+            //it creates another reference to Animal.prototype
+            //which effectively links Surrogate to the same object that Animal is linked to,
+            //which is Animal.prototype,
+            //which means that if you add a property on Surrogate.prototype, e.g
+            //Surrogate.prototype.fly you are not modifying a separate obj,
+            //but a shared obj Foo.prototype
+            //here is the test:
+            
+            Surrogate.prototype.fly = function(){
+                console.log('I can fly');
+            }
+            
+            var someAnimal = new Animal('loch ness monster');
+            someAnimal.fly();//I can fly
+            
+            //generally this is not what we want
+            //we could do Dog.prototype = new Animal() which would create a new object linked to Animal.prototype
+            //but since we do not want to create a new instance of Animal for that, we use Surrogate instead:
+            Dog.prototype = new Surrogate();
+            Dog.prototype.bark = function(){
+                console.log('bark');
+            }
+            var someDog = new Dog();
+            someDog.bark(); //bark
+            someDog.fly(); //I can fly
+            
+            //the silly choice of 'fly' property added to Animal.prototype via Surrogare.prototype
+            //is to underscore why we don't want to say:
+            //Dog.prototype = Animal.prototype
+            //it makes sense to add properties to the Dog that Animal does not have.
+            //but there is never a need to add properties to a Surrogate, so the 'fly' was to
+            //illustrate why Dog.prototype = Animal.prototype should be avoided.
+            //Adding properties to Surrogate technically does not prevent us from adding properties to Animal
+            //but in real life adding properties to Surrogate makes no sense, so there is no danger
+            //of someone intentionally adding a property on a Surrogate and inadvertently modifying Aimal.
+            //The role of the surrogate is to block the link between Dog.protype and Animal.prototype.
+            //Now if we add a property to Dog.prototype it is not going to add property to Animal.prototype
+            //This  results in error, which is good,
+            //we don't want any animal to bark:
+            
+            //someAnimal.bark(); //Uncaught TypeError: undefined is not a function 
+            
+            //so far this is better than 02.html because we solbes of the two problems:
+            //we wanted to avoid creating a new Animal instance when setting Dog's prototype.
+            //the other problem remains: that the "super class" Animal constructor is not called
+            //when "sub class" Dog is created.
+            //see 04.html
+            
+        </script>
+    </head>
+</html>
