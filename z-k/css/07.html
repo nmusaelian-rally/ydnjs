@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+CSS works by specifying attributes on selectors
+see 07.png
+-->
+<style type="text/css">
+    header{
+        color: green; /*all selectors inside <header> will also have text green unless specified differently*/
+    }
+    h2{
+        color: red;
+    }
+    header > h3{
+        color: orange;
+    }
+</style>
+</head>
+<body>
+    <header>
+        <h1>Title</h1>
+        <h2>Subtitle</h2>
+        <h3>Sub-sub-title</h3>
+        <section>
+            <p>this text is also green no matter how deeply nested inside header</p>
+        </section>
+    </header>
+    <h2>h2 outside header keeps its color red</h2>
+    <h3>h3 outside of header does not stay orange because only h3 inside header is set to orange</h3>
+    <p>This is done using immediate child selector ></p>
+     <code>header > h3 {color:orange;}</code>
+</body>
+</html>
