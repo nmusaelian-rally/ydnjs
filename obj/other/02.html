@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //public members are initialized in constructor
+            //public methods are added on prototype
+            function Container(param){
+                this.member = param; //public member
+                var privateMember = param + 'xyz'; //private member declared with var.
+            }
+            Container.prototype.append = function(str){
+                return this.member + str;
+            }
+            var myContainer = new Container('abc');
+            var a = myContainer.append('def');
+            console.log(a); //abcdef
+            
+        </script>
+    </head>
+</html>

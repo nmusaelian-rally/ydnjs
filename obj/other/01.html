@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //public instance variables are initialized in the constructor
+            function Container(param){
+                this.member = param; //public member
+                var privateMember = param + 'xyz'; //private member declared with var.
+            }
+            
+            var myContainer = new Container('abc');
+            console.log(myContainer.member); //abc
+            console.log(myContainer.privateMember); //undefined 
+            
+            var outsider = function(){
+               myContainer.member = myContainer.member + 'def';
+            }
+            outsider(); //can modify public members of myContainter obj
+            console.log(myContainer.member); //abcdef
+        </script>
+    </head>
+</html>

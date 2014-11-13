@@ -1,0 +1,38 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //private members are made by the constructor: ordinary vars and parameters of the constructor.
+            //privite methods are inner functions of the constructor.
+            //private methods cannot be called by public methods. You need privileged method for it.
+            //priviliged methods are created with 'this' inside the constructor
+            
+            function Container(param){
+                function dec(){
+                    if (secret > 0) { //inner function has access to private members in outer scope
+                        secret -= 1;
+                        return true;
+                    }
+                    else{
+                        return fals;
+                    }
+                }
+                
+                var secret = 3; //private member
+                var that = this; //make the object available to private methods because 'this' inside the inner function does not point to the object.
+                
+                this.member = param; //public member
+                
+                this.decrement = function(){
+                    return dec() ? secret : 'oh, noes!';
+                }
+                
+            }
+            
+            var myContainer = new Container('abc');
+            //myContainer.dec(); //Uncaught TypeError: undefined is not a function 
+            var num = myContainer.decrement(); 
+            console.log(num); //2
+            
+        </script>
+    </head>
+</html>
