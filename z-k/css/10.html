@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+:not pseudo-class selector
+see 10.png
+-->
+<style type="text/css">
+    .gray{
+        background-color: gray;
+    }
+    div:not(.gray){
+        background-color: yellow;
+    }
+</style>
+</head>
+<body>
+    <div class="gray">one</div>
+    <div class="gray">two</div>
+    <div>three</div>
+    <div class="gray">four</div>
+</body>
+</html>

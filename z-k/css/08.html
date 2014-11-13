@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<title></title>
+<!--
+classes is a way to group elements together to style them the same way
+see 08.png
+-->
+<style type="text/css">
+    .yellow{  /*different elementa classified as 'yellow' are styled the same*/
+        background-color: yellow;
+    }
+    article.gray{ /*only article elements with 'gray' class are styled here*/
+        background-color: gray;
+    }
+    
+</style>
+</head>
+<body>
+    <article class="yellow">some article: 'yellow' class applies</article>
+    <p class="yellow">some p: 'yellow' class applies</p>
+    <article class="gray">some other article: 'gray' class apply</article>
+    <p class="gray">some other p: 'gray' class does not apply</p>
+</body>
+</html>
