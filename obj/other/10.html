@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var Tinkerer = function Tinkerer(name){
+                this.name = name;
+            };
+            Tinkerer.prototype.tinker = function(){
+                console.log('tinker');
+            }
+            
+            var Man = function Man(name, greeting){
+                Tinkerer.call(this,name);
+                this.greeting = greeting;
+            }
+            
+            Man.prototype = Object.create(Tinkerer.prototype);
+            
+            var man = new Man('Wallace', 'Not a cracking toast, Gromit!');
+            man.tinker();
+            console.log(man.name, ':', man.greeting);
+            
+        </script>
+    </head>
+</html>

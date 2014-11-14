@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            function create(delegatee) {
+                var F = function F(){};
+                F.prototype = delegatee;
+                return new F();
+            }
+            
+            var Dog = {
+                doSomething: function(){
+                    console.log("bark");
+                },
+                doSomethingElse: function(){
+                    console.log("fetch the slippers");
+                }
+            };
+            
+            var dog1 = create(Dog);
+            var dog2 = create(Dog);
+            var gromit = create(Dog);
+            gromit.doSomething = function(){
+                console.log("read Plato's Republic");
+            }
+            
+            dog1.doSomething();//bark 
+            dog2.doSomething();//bark 
+            gromit.doSomething();//read Plato's Republic
+            gromit.doSomethingElse();//fetch the slippers
+        </script>
+    </head>
+</html>

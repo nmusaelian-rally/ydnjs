@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var Vehicle = function Vehicle(){};
+            Vehicle.prototype.go = function(){
+                console.log('wrooooom');
+            }
+            
+            var vehicle = new Vehicle();
+            
+            console.log(vehicle.constructor === Vehicle); //true
+            console.log(vehicle instanceof Vehicle); //true
+            
+            var Candy = function Candy(){};
+            Candy.prototype.bad4u = function(){
+                console.log('tooth decay');
+            }
+            
+            vehicle.constructor = Candy;
+            console.log(vehicle.constructor === Candy); //true
+            console.log(vehicle instanceof Candy);    //false
+            vehicle.go();  //wrooooom
+            vehicle.bad4u(); //Uncaught TypeError: undefined is not a function
+            
+            //that 'constructor' we set is not the special built-in 'constructor'
+            //that built-in constructor cannot be changed.
+        </script>
+    </head>
+</html>

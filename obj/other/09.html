@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var Vehicle = function Vehicle(color){
+                this.color = color;
+            };
+            
+            Vehicle.prototype.go = function(){
+                console.log('wroooom');
+            }
+            
+            var Car = function Car(color,wheels){
+                Vehicle.call(this,color);
+                this.wheels = wheels;
+            };
+            
+            Car.prototype = Object.create(Vehicle.prototype);
+            var car = new Car('yellow',4);
+            car.go();
+            console.log(car.color, car.wheels);
+        </script>
+    </head>
+</html>

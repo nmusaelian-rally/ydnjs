@@ -1,0 +1,29 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //sometimes we don't have to fake classes but delegate
+            
+            function create(delegatee){
+                var F = function F(){};
+                F.prototype = delegatee;
+                return new F();
+            }
+            
+            var vehicle = {
+                go: function(){
+                    console.log('whooom');
+                }
+            }
+            
+            var car1 = create(vehicle);
+            var car2 = create(vehicle);
+            var car3 = create(vehicle);
+            car3.go = function(){
+                console.log('whoom...honk');
+            }
+            car1.go(); //whoom
+            car2.go(); //whoom
+            car3.go(); //whoom...honk
+        </script>
+    </head>
+</html>
