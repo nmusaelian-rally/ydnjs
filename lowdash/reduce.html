@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script>
+        <script type="text/javascript">
+            var ar = [1,2,3];
+            var objA = {'a':1,'b':2,'c':3};
+            var random = 42;
+            
+            var finalTotal = _.reduce(ar, function(runningTotal, element){
+                return runningTotal + element;
+            });
+            console.log(finalTotal);
+            
+            var objB = _.reduce(objA, function(obj, val, key){
+                obj[key] = val * random;
+                return obj;
+            },{})
+            
+            console.log(objB); //{a:42, b: 84, c:126}
+            console.log(objA); //{a:1, b: 2, c:3}
+        </script>
+    </head>
+</html>

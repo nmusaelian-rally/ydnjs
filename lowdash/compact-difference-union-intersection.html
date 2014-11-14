@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <!--script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script-->
+        <script = src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+        <script type="text/javascript">
+
+            var arr1 = [0, 1, 2, 3, 4, 5, false, ''];
+            
+            //remove falsy values
+            arr1 = _.compact(arr1);//[1, 2, 3, 4, 5]   //compact undefined in lowdash
+            console.log(arr1);
+            
+            var arr2 = [5, 2, 10];
+            
+            console.log(_.difference(arr1, arr2)); //[1,3,4]
+            
+            //_.union creates an array of unique values, in order:
+            console.log( _.union(arr1, arr2));//[1,2,3,4,5,10] //union undefined in lowdash
+            
+            console.log(_.intersection(arr1, arr2)); //[2,5,]
+            
+        </script>
+    </head>
+</html>

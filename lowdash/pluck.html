@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <!--script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script-->
+        <script = src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+        <script type="text/javascript">
+            //Retrieves the value of a specified property from all elements in the collection.
+            var people = [
+                {'name':'Pushkin','age':37},
+                {'name':'Titian','age':99}
+            ];
+            
+            var namesArr = _.pluck(people,'name'); 
+            console.log(namesArr); //["Pushkin", "Titian"]  //undefined  with lowdash
+            
+        </script>
+    </head>
+</html>

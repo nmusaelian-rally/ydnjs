@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <!--script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script-->
+        <script = src="http://cdnjs.cloudflare.com/ajax/libs/underscore.js/1.7.0/underscore.js"></script>
+        <script type="text/javascript">
+            //Iterates over elements of a collection, returning an array of all elements the callback returns truthy for
+            var people = [
+                {'name':'Pushkin','age':37, 'killed in a duel': true},
+                {'name':'Galois','age':20, 'killed in a duel': true},
+                {'name':'Titian','age':99, 'killed in a duel': false}
+            ];
+            
+            var killedInDuel = _.filter(people,'killed in a duel'); 
+            console.log(killedInDuel);
+            
+            var old = _.filter(people,{'age':99});//2 objs Pushkin, Galois
+             console.log(old); //obj Titian 
+            
+            
+        </script>
+    </head>
+</html>
