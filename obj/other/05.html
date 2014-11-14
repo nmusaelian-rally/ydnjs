@@ -1,0 +1,24 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //how to set private var:
+            function Foo(x){
+                var bar = x; //create a private member
+                
+                //create priviliged methods:
+                this.setBar = function(x){
+                    bar = x;
+                }
+                this.getBar = function(){
+                    return bar;
+                }
+            }
+            
+            var f = new Foo(10);
+            console.log(f.getBar());
+            f.setBar(100);
+            console.log(f.getBar());
+            console.log(f.bar);//undefined
+        </script>
+    </head>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //private and privileged members can only be added at construction time
+            //public members can be added at any time
+            
+            function Foo(x){
+                this.x = x; //public
+                
+                var secret = 42; //private
+                var that = this; //private
+                
+                function encode(){ //private, inner func
+                    return secret+= x;
+                }
+                
+                this.answer = function(){ //priviliged
+                    console.log(that); //Foo-> answer: function(){},x:7  //Note that private members are not printed in the console
+                    console.log(encode()); //49
+                }
+            }
+            
+            var foo = new Foo(7);
+            Foo.prototype.sayHi = function(){ //public method added outside of the constructor
+                console.log('hi');
+            }
+            
+            foo.answer();
+            
+        </script>
+    </head>
+</html>

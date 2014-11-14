@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            
+            function Stranger(height){
+                this.height = height;
+                var that = this;
+                this.come = function(){
+                    console.log('come ');
+                    return that;
+                }
+                this.go = function(){
+                    console.log('and go');
+                    return that;
+                }
+            }
+            
+            var s = new Stranger(158);
+            s.come().go();
+        </script>
+    </head>
+</html>

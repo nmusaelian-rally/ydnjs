@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function Man(name){
+                this.name = name;
+                this.phoneGreeting = function(){
+                    console.log(this.name + ' and Gromit Windows Cleaning.How can we be of assistance?')
+                }
+            }
+            
+            var wallace = new Man('Wallace');
+            wallace.phoneGreeting(); //Wallace and Gromit Windows Cleaning.How can we be of assistance?
+            
+            setTimeout(wallace.phoneGreeting, 1000);// and Gromit Windows Cleaning.How can we be of assistance?
+            //"wallace" did not print. The binding is lost when method is passed by ref
+            
+            function bind(obj, method){
+                return function(){  //create closure that captures obj and method
+                    method.call(obj);
+                }//return function closure that calls method in the context of obj
+            }
+            
+            setTimeout(bind(wallace, wallace.phoneGreeting), 1000); //"wallace" prints
+            //Wallace and Gromit Windows Cleaning.How can we be of assistance?
+        </script>
+    </head>
+</html>

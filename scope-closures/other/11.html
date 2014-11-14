@@ -1,0 +1,21 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            for (var i=0;i<3;i++) {
+                (function(){
+                    var ii =i;
+                    setTimeout(function(){
+                        console.log(ii); //0,1,2
+                    },1000);
+                })();
+            }
+            
+            for(var j=0;j<3;j++){
+                setTimeout((function(){
+                    var jj = j;
+                    console.log(jj); //0,1,2
+                })(),1000);
+            }
+        </script>
+    </head>
+</html>
