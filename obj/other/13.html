@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //no constructors, no 'new' keyword:
+            var actor = {
+                canAct: true,
+                canSpeak: true
+            };
+            
+            var silentActor = Object.create(actor);
+            silentActor.canSpeak = false;
+            
+            console.log(silentActor);
+        </script>
+    </head>
+</html>
+
+<!--
+notice that canAct does not exist on silentActor. It is delegated from silentActor to actor:
+
+Object
+    canSpeak: false
+        Object
+            canAct: true
+            canSpeak: true
+
+
+-->
