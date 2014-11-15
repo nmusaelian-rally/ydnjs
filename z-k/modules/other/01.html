@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script>
+        <script type="text/javascript">
+            /*
+             We could have written this as an object literal ({}),
+             but by enclosing it in a function instead we created a closure.
+             This has the effect of protecting state (and potentially functionality)
+             from the outside world.
+             We return only the public API,everything else is private –
+             the names of voters cannot be listed,
+             the vote tallies can only be updated by voting.
+             **/
+            
+            var votingManager = function(){
+                //private:
+                var alreadyVoted = {};
+                var yesVotes = 0;
+                var noVotes = 0;
+                var percent = function(num){
+                    return Math.round(100*(num/(yesVotes+noVotes)));
+                }
+                //public api:
+                return {
+                    vote: function(name, voteYes){
+                        if (alreadyVoted[name]) {
+                            console.log(name, 'you already voted');
+                        }
+                        else{
+                            alreadyVoted[name] = true;
+                            voteYes==='yes' ? yesVotes++ : noVotes++;
+                        }
+                        
+                    },
+                    report: function(){
+                        var results = {
+                            yes: yesVotes,
+                            no: noVotes
+                        };
+                        //console.log(results);
+                        _.forEach(results, function(val,key){
+                            console.log(key + ': ' + percent(val) + '%');
+                        });
+                            
+                    }
+                }
+            }
+            //Math.round(Math.random()) returns 1 or 0, and is mapped to yes or no vote below:
+            var v = votingManager();
+            var voters = ['Wallace','Gromit','Feathers McGraw','Wendolene','Shaun','Preston'];
+            _.forEach(voters, function(voter){
+                v.vote(voter, Math.round(Math.random()) ? 'yes' : 'no')
+            })
+            v.report(); //yes: 33% no: 67%
+            
+        </script>
+    </head>
+</html>
