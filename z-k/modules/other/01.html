@@ -46,12 +46,20 @@
                 }
             }
             //Math.round(Math.random()) returns 1 or 0, and is mapped to yes or no vote below:
-            var v = votingManager();
             var voters = ['Wallace','Gromit','Feathers McGraw','Wendolene','Shaun','Preston'];
+            
+            //votingManager is not a singleton. We can have rounds of voting:
+            var round1 = votingManager();
             _.forEach(voters, function(voter){
-                v.vote(voter, Math.round(Math.random()) ? 'yes' : 'no')
+                round1.vote(voter, Math.round(Math.random()) ? 'yes' : 'no')
             })
-            v.report(); //yes: 33% no: 67%
+            round1.report(); //yes: 33% no: 67%
+            
+            var round2 = votingManager();
+            _.forEach(voters, function(voter){
+                round2.vote(voter, Math.round(Math.random()) ? 'yes' : 'no')
+            })
+            round2.report(); //yes: 83% no: 17%
             
         </script>
     </head>
