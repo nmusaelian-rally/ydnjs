@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function callMeLater(fn, context, arg){
+                setTimeout(function(){
+                    fn.call(context, arg); 
+                },5000);
+            }
+            
+            var obj = {
+                a:42,
+                printA: function(){
+                    console.log(this.a);
+                }
+            }
+            
+            obj.printA(); //42
+            
+            setTimeout(obj.printA, 1000); //undefined, when passing func by ref binding is lost
+            setTimeout(obj.printA.call(obj),2000); //42 bind explicitly
+            
+            callMeLater(obj.printA, obj); //42
+        </script>
+    </head>
+</html>

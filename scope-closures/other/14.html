@@ -1,0 +1,26 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //closure is used to create variations of a more generic function:
+            function makeConverter(toUnit, factor, offset){
+                var offsetValue = offset || 0;
+                return function(input){
+                    value = (input + offsetValue)*factor;
+                    return value + ' ' + toUnit;
+                }
+            }
+            
+            var milestoKm = makeConverter('km', 1.60936);
+            var distance = milestoKm(10);
+            console.log(distance);
+            
+            var poundsToKg = makeConverter('kg',0.45460)
+            var weight = poundsToKg(10);//16.0936 km
+            console.log(weight);//4.546 kg
+            
+            var farenheitToCelsius = makeConverter('C', 0.5556, -32);
+            var temperature = farenheitToCelsius(10);
+            console.log(temperature);//-12.2232 C
+        </script>
+    </head>
+</html>32

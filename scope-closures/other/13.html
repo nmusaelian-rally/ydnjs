@@ -1,0 +1,63 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //create an array of functions that prints numbers
+            function makePrinterFunctions(){
+                var arrF = [];
+                for(var i=0;i<3;i++){
+                    arrF[i] = function(){
+                        console.log(i);
+                    }
+                    arrF[i](); //this closure calls function with current value of i in each iteration, sort of like iife
+                }
+                
+            }
+            makePrinterFunctions();//0,1,2
+            
+            //this example has unexpected results
+            function makePrinterFunctions2(){
+                var arrF = [];
+                for(var i=0;i<3;i++){
+                    arrF[i] = function(){ 
+                        console.log(i);
+                    }
+                }
+                return arrF;
+            }
+            
+            var print = makePrinterFunctions2(); 
+            for(var j=0;j<3;j++){
+                print[j](); //3 prints 3 three times
+            }
+            
+            //All three print functions point to the same variable i.
+            //BY THE TIME THE 3 FUNCTIONS ARE INVOKED, THE VALUE OF  i IS 3 (IT'S LAST VALUE)
+            //because they are invoked after the outer function with its loop has exited
+            //and the closure has access to the i variable of its outer scope, but only to the last
+            //value stored in that veriable
+            
+            //this example fixes a problem in makePrinterFunctions2
+            
+            function makePrinterFunctions3(){
+                var arrF = [];
+                for(var k=0;k<3;k++){
+                    (function(k2){
+                        arrF[k2] = function(){
+                            console.log(k2);
+                        }
+                    })(k); //capture k as a local var for the closure, used as k2 parameter to iife
+                }
+                return arrF;
+            }
+            
+            var printAgain = makePrinterFunctions3();
+            for(var l=0;l<3;l++){
+                printAgain[l]();
+            }
+            
+            //since every function invocation happens in a unique execution context,
+            //it guarantee the uniqueness of the argument variable across successive invocations.
+
+        </script>
+    </head>
+</html>
