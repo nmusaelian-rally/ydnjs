@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //Primitive parameters (such as a number) are passed to functions by value,
+            //but if the function changes the value of the parameter,
+            //this change is not reflected in the calling function or anywhere else.
+            
+            function foo(){
+                var str = "ok";
+                bar(str);
+                console.log(str); //ok
+            }
+            
+            function bar(s){
+                s = "not " + s;
+                console.log(s); //not ok
+            }
+            
+            foo(); //not ok, ok
+            
+            function func(){
+                //array is modified - passed by ref
+                var characters = ['Wallace','Gromit','Feathers McGraw','Wendolene','Preston'];
+                console.log(characters.length); //5
+                f(characters);
+                console.log(characters.length); //6
+            }
+            
+            function f(chars){
+                chars.push('Shaun');
+            }
+            
+            func(); //5, 6
+            
+        </script>
+    </head>
+</html>

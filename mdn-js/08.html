@@ -1,0 +1,37 @@
+<html>
+    <head>
+        <style type="text/css"></style>
+        <script type="text/javascript">
+            function walkTree(node) {
+                if (node == null) {
+                    console.log('the end!!');
+                    return;
+                }
+                if(node.nodeType !== 3){ //do not print #text 
+                    console.log(node);
+                    console.log(node.childNodes.length);
+                }
+                for (var i = 0; i < node.childNodes.length; i++) {
+                    walkTree(node.childNodes[i]);
+                    //see in 08a.png how nested <ul> is traversed multiple times, e.g.
+                    //as a child node of a parent div, and then later as "its own" node
+                    
+                }
+            }
+        </script>
+    </head>
+    <body>
+        <div>outer div
+            <div>
+                inner div
+                <ul>
+                    <li>1</li>
+                    <li>2</li>
+                    <li>3</li>
+                </ul>
+                
+            </div>
+        </div>
+        <input type="button" value="walk" onclick="walkTree(document.body)"/>
+    </body>
+</html>

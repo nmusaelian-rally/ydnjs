@@ -1,0 +1,19 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //Function expressions are convenient when passing a function as an argument to another function.
+            
+            function map(fn, arr){
+                var result = []; 
+                for(var i=0;i<arr.length;i++){
+                    result[i] = fn(arr[i]);
+                }
+                
+                return result;
+            }
+
+            var a = map(function(x){return x*x*x}, [0,1,2,5]);
+            console.log(a);
+        </script>
+    </head>
+</html>

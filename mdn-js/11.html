@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //scope chaining:
+            
+            function foo(x){
+                function bar(y){
+                    function biz(z){
+                        return x + y + z;
+                    }
+                    return biz;
+                }
+                return bar;
+            }
+            var foobar = foo(2)(3)(4);
+            console.log(foobar);//9
+            
+            //name conflict - when two vars with same name exist in outer and inner scope,
+            //inner scope wins. Here is scope chain: {inside, outside, global object}
+            
+            function outside(){
+                var x = 10;
+                return function inside(x){
+                    return x;
+                }
+            }
+            
+            var result = outside()(20);
+            console.log(result); //20, not 10
+            
+            //there is no way to get to x in the outside() scope when another x exists in closure that
+            //survives after it's outer function exists
+        </script>
+    </head> 
+</html>

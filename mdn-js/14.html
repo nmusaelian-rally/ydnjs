@@ -1,0 +1,16 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //var code is private, outsider can't set code, but can get code
+            function setCode(){
+                var code = Math.floor((Math.random() * 100) + 1);
+                return function(){
+                    return code;
+                }
+            }
+            
+            var c = setCode();
+            console.log(c());    
+        </script>
+    </head>
+</html>

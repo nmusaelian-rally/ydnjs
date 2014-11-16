@@ -1,0 +1,14 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function outside(x){
+                return function inside(y){
+                    return x+y;
+                }
+            }
+            
+            var foobar = outside(2)(3);
+            console.log(foobar);
+        </script>
+    </head>
+</html>

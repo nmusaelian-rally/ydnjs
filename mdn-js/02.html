@@ -1,0 +1,34 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //Array literal
+            //If you put two commas in a row, the array is created with undefined for the unspecified elements
+            
+            var characters = ['Wallace','Gromit','Feathers McGraw','Wendolene',,'Preston'];
+            //'Shaun' is missing
+            console.log(characters[4]); //undefined
+            console.log(characters.length); //6
+            
+            //Object literal
+            var foo = {
+                "?":42,
+                "!":"!pants",
+                "2":"bar"
+            }
+            
+            console.log(foo[2]); //bar
+            
+            var home = {
+                man: 'Wallace',
+                dog: 'Gromit',
+                "paying guest":'Feathers McGraw'
+            };
+            
+            //in operator:
+            if ('paying guest' in home) {  //evaluates to true
+                console.log('Feathers McGraw!');
+            }
+            
+        </script>
+    </head>
+</html>

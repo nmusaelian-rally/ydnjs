@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function countSelected(myForm){
+                var arr = [];
+                for(var i=0;i<myForm.options.length;i++){
+                    if (myForm.options[i].selected) {
+                        if (myForm.options[i].value === 'Preston') {
+                            break;
+                        }
+                        arr.push(myForm.options[i].value);
+                    }
+                }
+                console.log(arr);
+                return arr.length;
+            }
+        </script>
+        <form name="selectChars">
+            <p>Choose and click the button below</p>
+            <select name="chars" multiple="multiple">
+                <option selected="selected">Wallace</option>
+                <option selected="selected">Gromit</option>
+                <option>Feathers McGraw</option>
+                <option>Wendolene</option>
+                <option>Preston</option>
+            </select>
+            <input type="button" value="How many selected?" onclick="alert(countSelected(document.selectChars.chars))"/>
+        </form>
+    </head>
+</html>

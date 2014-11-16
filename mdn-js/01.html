@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="text/javascript">
+           //you can refer to a variable declared later, without getting an exception.
+           //This is known as hoisting; variables in js are lifted to the top of the function or statement.
+           //But, variables that aren't initialized yet will return a value of undefined. 
+            
+            
+            var x = 42; //global var
+            
+            (function(){
+                
+              //there is a local x in the function. It is hoisted to the top, with value undefined
+              //since it is initialized later.
+              
+              console.log(x); //undefined
+              var x = 43;     //local x is initialized
+              console.log(x); //43
+            })();
+            
+            console.log(x); //42, global
+            
+            //Because of hoisting, all var statements in a function should be placed
+            //as near to the top of the function as possible. 
+            
+            //------------------
+            
+            var y = 21;
+            (function(){
+                console.log(y); //21 it is using global, since no local y was declared inside func
+                y++;
+            })();
+            console.log(y); //22
+        </script>
+    </head>
+</html>

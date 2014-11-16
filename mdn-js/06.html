@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //function declaration can be below the call
+            //as long as it is a named function:
+            
+            console.log(double(2)); //4
+            function double(x){
+                return 2*x;
+            }
+            
+            //this will not work:
+            //console.log(tripple(2)); //Uncaught TypeError: undefined is not a function 
+            var tripple = function(x){
+                return 3*x;
+            }
+            console.log(tripple(2)); //6
+        </script>
+    </head>
+</html>

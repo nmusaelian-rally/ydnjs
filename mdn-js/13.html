@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var animal = function (name){
+                var sex = Math.round(Math.random()) ? 'male' : 'female'
+                return {
+                    setName: function(newName){
+                        name = newName;
+                    },
+                    getName: function(){
+                        return name;
+                    },
+                    getSex: function(){
+                        return sex;
+                    },
+                    print: function(){
+                        console.log(this.getName() + ', ' + this.getSex());
+                    }
+                }
+                
+            }
+            
+            var a = animal('river horse'); 
+            a.print();
+            a.setName('hippo');
+            a.print();
+            
+        </script>
+    </head>
+</html>

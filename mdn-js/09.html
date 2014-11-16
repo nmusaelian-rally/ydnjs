@@ -1,0 +1,28 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //closure example: preservation of variables
+            //This is not different from storing references in other objects, but is less obvious because
+            //we don't set the references directly and cannot inspect them.
+            
+            //Since each call provides potentially different arguments, a new closure is created
+            //for each call to outer.
+            
+            function outer(x){
+                function inner(y){
+                    x *= 2;          //inner modified x that exists in outer's scope
+                    return x + y;
+                }
+                return inner;
+            }
+            
+            var foo = outer(2);
+            var bar = foo(3); //still has access to outer scope's variable x:2 to double it and add to y:3.
+            console.log(bar); //7
+            
+            //or it can be done in one line:
+            var foobar = outer(2)(4);
+            console.log(foobar); //8
+        </script>
+    </head>
+</html>

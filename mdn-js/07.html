@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            // A function defined inside another function can access all variables defined in its parent function
+            //and any other variable to which the parent function has access.
+            
+            var a = 100;
+            var b = 200;
+            var foo = "foobar";
+            
+            function outer(){
+                var c = 3;
+                function inner(){
+                    var a = 1;   //will use local a, not global a
+                    var b = 2;   //will use local b, not global b
+                    var score = a + b + c; //will use c from parent (outer func) scope
+                    console.log(foo + score); //will use global foo
+                }
+                inner();
+            }
+            
+            outer();//foobar6
+        </script>
+    </head>
+</html>

@@ -1,0 +1,23 @@
+<html>
+    <head>
+        <script type="text/javascript">
+        //since the inner function has access to the scope of the outer function,
+        //the variables and functions defined in the outer function will live longer
+        //than the outer function itself, if the inner function manages to survive beyond
+        //the life of the outer function.
+        
+        //A closure is created when the inner function is somehow made available
+        //to any scope outside the outer function.
+        
+        var dog = function (name){
+            var getName = function (){
+                return name;
+            }
+            return getName; //will survive beyond the life of the outer func
+        }
+        
+        var myDog = dog('Gromit');
+        console.log(myDog());
+        </script>
+    </head>
+</html>

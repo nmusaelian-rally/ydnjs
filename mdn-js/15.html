@@ -1,0 +1,25 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //arguments: useful when you don't know how many args will be passed to the func
+            
+            function myConcat(separator){
+                var result = "";
+                var i;
+                //start with 1 to that resulting string does not start with separator
+                for(i=1;i<arguments.length;i++){
+                    if (i < arguments.length-1) { //don't add separator after the last argument
+                        result += arguments[i] + separator; 
+                    }
+                    else{
+                        result += arguments[i];
+                    }
+                }
+                return result;
+            }
+            
+            var str = myConcat(',','Wallace','Gromit','Feathers McGraw','Wendolene','Shaun','Preston');
+            console.log(str);
+        </script>
+    </head>
+</html>
