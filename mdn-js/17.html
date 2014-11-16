@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //dynamically generate an obj property using [] syntax
+            var when = (new Date()).getDate();
+            var obj = {};
+            obj[when] = 'abc';
+            console.log(obj); //Object {16: "abc"}
+            
+            //add a property, define its getter and setter after object was created
+            
+            var d = new Date();
+            console.log(d.year); //undefined
+            Object.defineProperty(d, 'year', {
+                get: function(){return this.getFullYear();},
+                set: function(y){this.setFullYear(y)}
+            })
+            console.log(d.year); //2014
+            d.year = 2015;
+            console.log(d.year); //2015
+            
+            //default getter and setter:
+            
+            var o = {
+                a:42
+            };
+            
+            o.a = 43;
+            console.log(o.a);
+            
+            //define getter and setter when constructing an object
+            
+            var obj = {
+                foo: 42,
+                get bar(){return this.__bar},
+                //if we return "xyz" it'll always return "xyz" regardless of what setter sets it to
+                set bar(value){this.__bar = value;}
+                //this.bar will cause Uncaught RangeError: Maximum call stack size exceeded
+            }
+            
+            console.log(obj.foo); //exists by default because 'foo' property was created
+            console.log(obj.bar); //undefined
+            obj.bar = 'foobar';
+            console.log(obj.bar); //foobar
+        </script>
+    </head>
+</html>
