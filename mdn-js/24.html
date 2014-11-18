@@ -1,0 +1,56 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //illustration of problem of closure in the loop, see 22.png
+            //when I click on Email field a tip related to Age field (last in the array) is displayed
+            
+            window.onload = function(){
+                function showHelp(help) {
+                    document.getElementById('help').innerHTML = help;
+                }
+                
+                function helper(help) {
+                    return function(){
+                        showHelp(help);
+                    }
+                }
+                function setupHelp() {
+                    var helpText = [
+                        {'id': 'email', 'help': 'Your e-mail address'},
+                        {'id': 'name', 'help': 'Your full name'},
+                        {'id': 'age', 'help': 'Your age (you must be over 21)'}
+                    ];
+
+                    for (var i = 0; i < helpText.length; i++) {
+                        var item = helpText[i];
+                        //instead of using a closure in the loop:
+                        
+                        //document.getElementById(item.id).onfocus = function() {
+                        //    showHelp(item.help);
+                        //}
+                        
+                        //make a function factory to create a separate closure for each iteration
+                        //this way we capture item.id from each iteration into a helper function's parameter
+                        document.getElementById(item.id).onfocus = helper(item.help);
+                    }
+                }
+                setupHelp();
+            }
+            
+        </script>
+    </head>
+    <body>
+        <p id="help">
+            Helpful notes
+        </p>
+        <p>
+            Email: <input type="text" id="email" name="email">
+        </p>
+        <p>
+            Name: <input type="text" id="name" name="name">
+        </p>
+        <p>
+            Age: <input type="text" id="age" name="age">
+        </p>
+    </body>
+</html>

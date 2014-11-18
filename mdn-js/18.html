@@ -1,0 +1,27 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //closure is an object that combines a function and the environment within which the function was created
+            //here we have two closures foo and bar that share the same function body defeinition, but store different environments.
+            //in foo, x is 2. in bar, x is 5
+            
+            function makeAdder(x){
+                return function(y){
+                    return x+ y;
+                };
+            }
+            
+            var foo = makeAdder(2);
+            var result1 = foo(2);
+            console.log(result1); //4
+            
+            var bar = makeAdder(5);
+            var result2 = bar(6);
+            console.log(result2); //11
+            
+            var baz = makeAdder(1)(2);
+            console.log(baz); //3
+            
+        </script>
+    </head>
+</html>

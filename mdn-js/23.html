@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //fixed with iife. See 24.html for a another solution
+            //when I click on Email field a tip related to Email field is displayed
+            window.onload = function(){
+                function showHelp(help) {
+                    document.getElementById('help').innerHTML = help;
+                }
+
+                function setupHelp() {
+                    var helpText = [
+                        {'id': 'email', 'help': 'Your e-mail address'},
+                        {'id': 'name', 'help': 'Your full name'},
+                        {'id': 'age', 'help': 'Your age (you must be over 21)'}
+                    ];
+
+                    for (var i = 0; i < helpText.length; i++) {
+                        (function(ii){
+                            var item = helpText[ii];
+                            document.getElementById(item.id).onfocus = function() {
+                            showHelp(item.help);
+                        }
+                        })(i);
+                        
+                    }
+                }
+                setupHelp();
+            }
+            
+        </script>
+    </head>
+    <body>
+        <p id="help">
+            Helpful notes
+        </p>
+        <p>
+            Email: <input type="text" id="email" name="email">
+        </p>
+        <p>
+            Name: <input type="text" id="name" name="name">
+        </p>
+        <p>
+            Age: <input type="text" id="age" name="age">
+        </p>
+    </body>
+</html>

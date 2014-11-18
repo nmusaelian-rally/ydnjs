@@ -1,0 +1,35 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var makeCounter = function(){
+                var privateCounter = 0;
+                function changeBy(val){
+                    privateCounter += val;
+                }
+                return{
+                    increment: function(){
+                        changeBy(1);
+                    },
+                    decrement:function(){
+                        changeBy(-1);
+                    },
+                    getValue: function(){
+                        return privateCounter;
+                    }
+                }
+            }
+            
+            var counter1 = makeCounter();
+            var counter2 = makeCounter();
+            //each counter is indepenent from the other.
+            //its environment is different from the environment of the other
+            //the closure variable privateCounter contains a diff instance each time
+            
+            counter1.increment();
+            counter1.increment();
+            console.log(counter1.getValue()); //2
+            counter2.increment();
+            console.log(counter2.getValue());//1
+        </script>
+    </head>
+</html>
