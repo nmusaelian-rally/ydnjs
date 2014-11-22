@@ -1,0 +1,36 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var size = 8
+            var height = size;
+            var width = height + 1;
+            var board = width*height; 
+            var str;
+            var i = 1;
+            while(i < board) {
+                if (i === 1) {
+                    str = 'x'
+                }
+                else if (i % 9 === 0) {
+                    str += '\n';
+                }
+                else if(str.slice(-1) ===  'x'){
+                    str += 'o';
+                }
+                else if (str.slice(-1) === 'o') {
+                    str += 'x';
+                }
+                else if (str.slice(-1) === '\n') {
+                    if (str.charAt(str.length - 7)  ===  'o') {
+                        str += 'x';
+                    }
+                    else if (str.charAt(str.length - 7) ===  'x'){
+                        str += 'o';
+                    }
+                }
+                i++;
+            }
+           alert(str); //console.log added an extra space
+        </script>
+    </head>
+</html>
