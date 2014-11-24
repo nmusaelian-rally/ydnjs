@@ -4,7 +4,7 @@
             //public instance variables are initialized in the constructor
             function Container(param){
                 this.member = param; //public member
-                var privateMember = param + 'xyz'; //private member declared with var.
+                var privateMember = param + 'xyz'; //private member declared with var and constructor's parameters become privite members
             }
             
             var myContainer = new Container('abc');

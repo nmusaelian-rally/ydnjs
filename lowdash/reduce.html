@@ -2,14 +2,16 @@
     <head>
         <script src="http://cdnjs.cloudflare.com/ajax/libs/lodash.js/2.4.1/lodash.backbone.js"></script>
         <script type="text/javascript">
+            //Reduces a collection to a value which is the accumulated result of running each element in the collection through the callback,
+            //where each successive callback execution consumes the return value of the previous execution.
             var ar = [1,2,3];
             var objA = {'a':1,'b':2,'c':3};
             var random = 42;
-            
+            //reduce on array returns sum of its elements
             var finalTotal = _.reduce(ar, function(runningTotal, element){
-                return runningTotal + element;
+                return runningTotal + element; 
             });
-            console.log(finalTotal);
+            console.log(finalTotal); //6
             
             var objB = _.reduce(objA, function(obj, val, key){
                 obj[key] = val * random;
@@ -18,6 +20,31 @@
             
             console.log(objB); //{a:42, b: 84, c:126}
             console.log(objA); //{a:1, b: 2, c:3}
+            
+            var painters = [
+                {
+                    name:'Rafael',
+                    born: 1500
+                },
+                {
+                    name:'Giotto',
+                    born: 1400
+                },
+                {
+                    name:'Bonnard',
+                    born: 1900
+                }
+            ]
+             var bornEarliest = _.reduce(painters, function(min, current){
+                if (current.born < min.born) {
+                    return current;
+                }
+                else{
+                    return min;
+                }
+            });
+             
+             console.log(bornEarliest); //Object {name: "Giotto", born: 1400}
         </script>
     </head>
 </html>
