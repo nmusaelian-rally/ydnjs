@@ -1,0 +1,44 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //"use strict";
+            //there are two define a function:
+            //var foo = function(){}; //a function as a value
+            //and
+            //function foo(){}; //declaration notation
+            //don't use declaration notation inside an if block or a loop
+            
+            // Function declarations are histed to the top:
+            console.log(sayHi());//hi
+            function sayHi(){
+                return 'hi';
+            }
+            
+            //functions as values are not hoisted to the top
+            //we need to use console.log(greeting) after function is defined, otherwise - error:
+            //console.log(greeting()); //Uncaught TypeError: undefined is not a function 
+            var greeting = function(){
+                return 'hello';
+            }
+            console.log(greeting());
+            
+            //if "use strict" is used, the code below results in error:
+            //Uncaught SyntaxError: In strict mode code, functions can only be declared at top level
+            //or immediately within another function. 
+            if (true) {
+                console.log(sayGoodbye()); //goodbye //but this syntax is problematic inside if block
+                function sayGoodbye(){
+                    return 'goodbye';
+                }
+            }
+            
+            if (true) {
+                //console.log(parting()); //Uncaught TypeError: undefined is not a function
+                var parting = function(){ //tjis syntax works inside an if block
+                    return 'bye';
+                }
+                console.log(parting()); //bye
+            }
+        </script>
+    </head>
+</html>

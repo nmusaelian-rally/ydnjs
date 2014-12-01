@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function countChars(str, c){
+                var count = 0;
+                for(var i=0; i<str.length;i++){
+                    if (str.charAt(i) === 'b') { //don't use square brackets, this is not an array: str.charAt[i]
+                        count++;
+                    }
+                }
+                return count;
+            }
+            
+            var result = countChars("babooshka", 'b');
+            console.log(result);
+        </script>
+    </head>
+</html>

@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //closures:
+            // 1. in js we can treat functions as values
+            // 2. local variables recreated every time a function is called
+            // 3. what happens to local vars when function that created them exits?
+            //N: the variables can still be accessed if they are closed over by an inner func
+            
+            function wrapValue(n){
+                return function(){
+                    return n*2;
+                }
+            }
+            
+            var foo = wrapValue(1); //2
+            var bar = wrapValue(42);//84
+            
+            console.log(foo(), bar());
+            
+            function wrapAgain(x){
+                return function(y){
+                    return x*y;
+                }
+            }
+            
+            var xx = wrapAgain(2);
+            var yy = xx(3);
+            console.log(yy); //6
+        </script>
+    </head>
+</html>

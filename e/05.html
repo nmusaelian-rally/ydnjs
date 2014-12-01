@@ -1,0 +1,22 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function power(base, exponent) {
+                exponent = exponent || 2;
+                var result = 1; //if I do not initialize result with a number, final result is NaN
+                for(var i=0;i<exponent;i++){
+                    result *= base;
+                }
+                return result;
+            }
+            
+            var withAllParams = power(2,3);
+
+            var withOneParam = power(2);
+            
+            console.log(withAllParams); //8
+            console.log(withOneParam);  //4
+            
+        </script>
+    </head>
+</html>

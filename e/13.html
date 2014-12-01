@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //convoluted way to add two numbers
+            //uses recursion
+            
+            function add(x, y){
+                if (y > 0) {
+                    return add(x+1,y-1);
+                }
+                else{
+                    return x;
+                }
+                
+            }
+            var sum = add(2,10);
+            console.log(sum);
+        </script>
+    </head>
+</html>
+
+<!--
+by the time we pass 3 and 9 to add(), js engine has two stacks,
+with 2 and 10, and 3 and 9
+JS engine to remember 2 and 10 because by the time it is done with the second execution of add()
+it potenitally may end up in the first execution context
+When the final call to add() ocurrs and we discover that y is 0 we return the accumulated
+value of x. 
+That returned value has to be passed back through each execution context effectively closing each stak
+until we reach the very first execution context that was created when we ran add(2,10)
+-->

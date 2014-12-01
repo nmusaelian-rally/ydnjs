@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function countSheepLoop(n){
+                for(var i=1;i<n;i++){
+                    console.log(i);
+                }
+                if (i === n) {
+                    console.log('zzzzzz');
+                }
+                
+            }
+            countSheepLoop(10);
+            
+            function countSheep(n) {
+                if (n <0) {
+                    return console.log('oh, noes!')
+                }
+                if (n == 0) {
+                    return console.log('zzzzzzzz');
+                }
+                console.log(n);
+                --n;
+                return countSheep(n);
+            }
+            
+            countSheep(10);
+        </script>
+    </head>
+</html>

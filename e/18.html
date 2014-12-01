@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var foo = {a:2};
+            var bar = foo;
+            
+            function f(obj){
+                obj.a = 42;
+            }
+            
+            f(bar);
+            console.log(foo.a); //42
+        </script>
+    </head>
+</html>

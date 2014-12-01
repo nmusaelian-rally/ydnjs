@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //because a function has to jump back to the place of the call when it returns
+            //the computer has to remember the context from which it was called
+            //Computer stores that context in the call stack
+            //Every time a function is called the current context is put on top of the stack.
+            //When the function returns it is removed from the stack to continue 
+            function chicken() {
+                return egg();    
+            }
+            
+            function egg() {
+                return chicken();
+            }
+            
+            console.log(chicken() + " came first"); //Uncaught RangeError: Maximum call stack size exceeded 
+        </script>
+    </head>
+</html>

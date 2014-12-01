@@ -1,0 +1,45 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function range(start, end){
+                var arr = [];
+                for(var i=start;i<=end;i++){
+                    arr.push(i);
+                    
+                }
+                return arr;
+            }
+            
+            function addRecursively(a) {     
+                function add(){
+                    //shift() removes the first element of the array and RETURNS it
+                    //shift() changes array length
+                    console.log('added recursively:');
+                    if (a.length == 0) {
+                        return 0;
+                    }
+                    else {
+                        return a.shift() + addRecursively(a);
+                    }
+                }
+                return add();
+            }
+            
+            function addWithLoop(a){
+                console.log('added with loop:');
+                var sum = 0;
+                for (var i=0; i<a.length; i++) {
+                    sum += a[i];
+                }
+                return sum;
+            }
+            
+            var a = range(1,10);
+            console.log(a);
+            var recursionLimit = 10;
+            var result = (a.length <= recursionLimit) ? addRecursively(a) : addWithLoop(a);
+            console.log(result); //55
+            
+        </script>
+    </head>
+</html>

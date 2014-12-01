@@ -1,0 +1,17 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function guessNumber(n){
+                var guess = prompt('guess a number');
+                guess = guess - 0;
+                if (guess == n) {
+                    console.log('correct!');
+                    return 1;
+                }
+                return guessNumber(n);
+            }
+            
+            guessNumber(42);
+        </script>
+    </head>
+</html>

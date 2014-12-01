@@ -1,0 +1,47 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function power(base, exponent){
+                debugger;
+                if (exponent == 0) {
+                    return 1;
+                }
+                else{
+                    return base * power(base, exponent-1);
+                }
+                
+            }
+            console.log(power(2,3));
+        </script>
+    </head>
+</html>
+
+<!--
+the functions are calulated in inverse order:
+first power(2, 0), then power(2, 1), then power(2, 2), then power(2, 3)
+After each calulation an element of the stack is released (i.e. memory is freed).
+
+power(2,3)
+= 2 * power(2,2)
+= 2 * (2 * power(2,1))
+= 2 * (2 * (2 * power(2,0)))
+as soon as we hit the termination condition exponent -- 0
+= 2 * (2 * (2 * 1))
+= 2 * (2 * 2)
+= 2 * 4
+
+
+2*2*2*1=8
+
+base: 2
+exponent: 3
+
+base: 2
+exponent: 2
+
+base: 2
+exponent: 1
+
+base: 2
+exponent: 0
+-->

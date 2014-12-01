@@ -1,0 +1,41 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //factorial of 5 is 5*4*3*2*1 = 120
+            
+            function f(n){
+                if (n < 0) {
+                   return 'oh, no!';
+                }
+                if (n == 0){   //base case is a form of termination condition and work as such if n is gt 0
+                    return 1; 
+                }
+               //recursive case
+                return  n*f(n-1);
+            }
+            
+            var result = f(5);  
+            console.log(result);    
+        </script>
+    </head>
+</html>
+
+<!--
+
+f(5) = 5*f(4) = 5*4*f(3) = 5*4*3*f(2) = 5*4*3*2*f(1) = 5*4*3*2*1*f(0)
+f(0) returns 1
+result = 5*4*3*2*1*1
+
+f(5) returns 5*f(4)
+stack 5, resolve f(4)
+f(4) returns 4*f(3)
+stack 5*4, resolve f(3)
+f(3) returns 3*f(2)
+stack 5*4*3 resolve f(2)
+f(2) returns 2*f(1)
+stack 5*4*3*2 resolve f(1)
+f(1) returns 1*f(0)
+stack 5*4*3*2*1 resolve f(0)
+f(0) returns 1
+calc 5*4*3*2*1*1
+-->

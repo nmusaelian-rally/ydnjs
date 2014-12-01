@@ -1,0 +1,30 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function factorialLoop(n){
+                var result = n;
+                while (n > 1) {
+                    n--;
+                    result *= n;
+                    
+                }
+                return result;
+            }
+            
+           function factorialRecursion(n) {
+                if (n < 0) {
+                    return console.log('oh,noes!')
+                }
+                if (n == 0) {
+                    return 1;
+                }
+                return n*factorialRecursion(n-1);
+           }
+            
+            
+            console.log(factorialLoop(5));       //120
+            console.log(factorialRecursion(5));  //120
+            
+        </script>
+    </head>
+</html>

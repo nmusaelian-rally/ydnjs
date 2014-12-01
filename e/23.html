@@ -1,0 +1,15 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            function countArguments(){
+                var count = arguments.length;
+                console.log(count);
+                for(var i=0;i<count;i++){
+                    console.log(arguments[i]);
+                }
+            }
+            
+            countArguments('foo','bar');//2 foo bar
+        </script>
+    </head>
+</html>
