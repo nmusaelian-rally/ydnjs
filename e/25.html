@@ -1,0 +1,39 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var a = [1,2,3,4];
+            
+            function turnToList(array){ 
+                if (array.length > 1) {
+                    return {
+                        value: array.shift(),
+                        rest : turnToList(array)
+                    }
+                }
+                else{
+                    return {
+                        value: array.shift(),
+                        rest : null
+                    }
+                }
+            }
+            
+            var l = turnToList(a);
+            
+            console.log(l);
+            
+            var ar = [];
+            
+            function turnToArray(list){
+                ar.push(list.value);
+                if(list.rest != null){
+                    turnToArray(list.rest);
+                }
+            }
+            
+            turnToArray(l);
+            console.log(ar);//[1, 2, 3, 4]
+            
+        </script>
+    </head>
+</html>
