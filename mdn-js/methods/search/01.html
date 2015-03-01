@@ -1,0 +1,20 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //If a non-RegExp object obj is passed,
+            //it is implicitly converted to a RegExp by using new RegExp(obj).
+            function testInput(re, str){
+                var verdict;
+                if (str.search != -1) {
+                    verdict = ' contains ';
+                }
+                else{
+                    verdict = ' doesn\'t contain ';
+                }
+                console.log(str, verdict, re);
+            }
+            
+            testInput('van Gogh','Oscar van Gogh');
+        </script>
+    </head>
+</html>

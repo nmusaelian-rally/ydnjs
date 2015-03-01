@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var homes = [
+                {
+                    "id": "1",
+                    "price": "149",
+                    "sqft": "400",
+                    "garage": "true"
+                },
+                {
+                    "id": "2",
+                    "price": "175",
+                    "sqft": "625",
+                    "garage": "true"
+                },
+                {
+                    "id": "3",
+                    "price": "160",
+                    "sqft": "500",
+                    "garage": "false"
+                }
+            ];
+            
+            var filteredHomes = homes.filter(function(home){
+                return (home.price <= 150) && (home.garage = true)
+            });
+            
+            console.log(filteredHomes);
+        </script>
+    </head>
+</html>

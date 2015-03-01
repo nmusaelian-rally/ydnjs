@@ -1,0 +1,18 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            //map calls a provided callback function once for each element in an array,
+            //in order,
+            //and constructs a new array from the results.
+            //callback is invoked only for indexes of the array which have assigned values
+            
+            var arr = ['2015-02-27T17:01:01.456','2015-02-27T17:01:01.789'];
+            var modifiedArr = arr.map(function(element){
+                return element+'Z'
+            });
+            console.log(arr);
+            console.log(modifiedArr);
+        </script>    
+    </head>
+</html>
+

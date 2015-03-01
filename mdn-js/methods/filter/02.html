@@ -1,0 +1,31 @@
+<html>
+    <head>
+        <script type="text/javascript">
+            var arr = [
+               {id:15},
+               {id:-1},
+               {id:12.2},
+               {id:null},
+               {id:NaN},
+               {id:'undefined'},
+               {foo:42}
+            ];
+            
+            var countOfInvalidIDs = 0;
+            
+            function filterByID(element) {
+                if (element.id && typeof(element.id) === 'number') {
+                    return true;
+                }
+                else{
+                    countOfInvalidIDs++;
+                    return false;
+                }
+            }
+            
+            var filteredArr = arr.filter(filterByID);
+            console.log(filteredArr); //{id:15},{id:-1},{id:12.2}
+            console.log(countOfInvalidIDs); //4
+        </script>
+    </head>
+</html>
