@@ -1,0 +1,46 @@
+<html>
+    <head>
+        <body>
+            <ul id="girlfriends">
+                <li>Wendolene Ramsbottom</li>
+                <li>Lady Tottington</li>
+                <li>Piella Bakewell</li>
+            </ul>
+            
+            <input type="text" placeholder="Search" onchange="filterBox(this.value)"
+        </body>
+        <script type="text/javascript">
+            var arr = [
+                "Wendolene Ramsbottom",
+                "Lady Tottington",
+                "Piella Bakewell"
+            ];
+            function filterBox(val){
+                var result = arr.filter(function(element){
+                    if (element.search(val) != -1) {
+                        return true
+                    }
+                    else{
+                        return false;
+                    }
+                });
+                console.log(result);
+                updateList(result);
+            }
+            
+            function updateList(result) {
+                var arr = [];
+                arr[0] = result;
+                document.getElementById("girlfriends").remove();
+                var ul = document.createElement('ul');
+                ul.id = "filtered-girlfriends";
+                document.body.appendChild(ul);
+                for(var i=0;i<arr.length;i++){
+                    var li = document.createElement('li');
+                    ul.appendChild(li);
+                    li.innerHTML += arr[i];
+                }
+            }    
+        </script>
+    </head>
+</html>

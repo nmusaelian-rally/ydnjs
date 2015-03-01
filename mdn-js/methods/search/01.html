@@ -5,7 +5,7 @@
             //it is implicitly converted to a RegExp by using new RegExp(obj).
             function testInput(re, str){
                 var verdict;
-                if (str.search != -1) {
+                if (str.search(re) != -1) {
                     verdict = ' contains ';
                 }
                 else{
@@ -15,6 +15,8 @@
             }
             
             testInput('van Gogh','Oscar van Gogh');
+            testInput('blues man','Oscar van Gogh');
+            
         </script>
     </head>
 </html>
