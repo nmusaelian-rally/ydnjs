@@ -1,12 +1,6 @@
 <html>
     <head>
         <body>
-            <ul id="girlfriends">
-                <li>Wendolene Ramsbottom</li>
-                <li>Lady Tottington</li>
-                <li>Piella Bakewell</li>
-            </ul>
-            
             <input type="text" placeholder="Search" onchange="filterBox(this.value)"
         </body>
         <script type="text/javascript">
@@ -15,6 +9,16 @@
                 "Lady Tottington",
                 "Piella Bakewell"
             ];
+            
+            var girlfriends = document.createElement('ul');
+            girlfriends.id = "girlfriends";
+            document.body.appendChild(girlfriends);
+            for(var i=0;i<arr.length;i++){
+                var li = document.createElement('li');
+                girlfriends.appendChild(li);
+                li.innerHTML += arr[i];
+            }
+            
             function filterBox(val){
                 var result = arr.filter(function(element){
                     if (element.search(val) != -1) {
@@ -28,18 +32,19 @@
                 updateList(result);
             }
             
-            function updateList(result) {
-                var arr = [];
-                arr[0] = result;
-                document.getElementById("girlfriends").remove();
-                var ul = document.createElement('ul');
-                ul.id = "filtered-girlfriends";
-                document.body.appendChild(ul);
+            function updateList(arr) {
+                if (document.getElementById("filtered-girlfriends")) {
+                    document.getElementById("filtered-girlfriends").remove();
+                }
+                var filteredGirlfriends = document.createElement('ul');
+                filteredGirlfriends.id = "filtered-girlfriends";
+                document.body.appendChild(filteredGirlfriends);
                 for(var i=0;i<arr.length;i++){
                     var li = document.createElement('li');
-                    ul.appendChild(li);
+                    filteredGirlfriends.appendChild(li);
                     li.innerHTML += arr[i];
                 }
+                
             }    
         </script>
     </head>
